@@ -3,23 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Note <Table></Table>aker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <!-- Form Login -->
-    <div class="login-container">
-        <h1>Login to Your Note Taker Account</h1>
-        <!-- button input -->
-        <button class="login-button google">Continue with Google</button>
-        <button class="login-button apple">Continue with Apple ID</button>
-        <button class="login-button sso">Continue with Facebook</button>
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email">
+    <div class="container" id="container">
+        <div class="row">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></i></a>
+                    <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></i></a>
+                    <a href="#" class="social"><i class="fa fa-linkedin" aria-hidden="true"></i></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button><a  class="got-note" href="/page/note.html">Sign Up</a></button>
+                <p id="mobile_para">To keep connected with us,please login</p>
+                <button class="ghost_mobile" id="signIn_mobile">Sign In</button>
+            </form>
         </div>
-        <!-- button Submit -->
-        <button class="submit-button">Submit</button>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></i></a>
+                    <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    <a href="#" class="social"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button><a  class="got-note" href="/page/note.html">Sign Up</a></button>
+                <p id="mobile_para">Don't have an account? Sign up here !!</p>
+                <button class="ghost_mobile" id="signUp_mobile"><a href="/page/note.html">Sign Up</a></button>
+    
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, User!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
     </div>
+    </div>
+    <script src="/js/login.js"></script>
 </body>
 </html>

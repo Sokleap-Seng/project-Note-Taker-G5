@@ -1,0 +1,549 @@
+/* Updated CSS: styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.sidebar {
+    width: 270px;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid white;
+    transition: width 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    border-radius: 20px;
+}
+
+.sidebar .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar .profile a {
+    font-size: 20px;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.sidebar .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    /* Gold border for king style */
+    box-shadow: 0 10px 14px rgba(255, 255, 255, 0.2);
+    /* Subtle shadow */
+    transition: transform 0.3s ease;
+    /* Smooth hover transition */
+    border: 1px solid white;
+}
+
+.sidebar .profile img:hover {
+    transform: scale(1.1);
+    /* Slightly enlarge on hover */
+}
+
+
+/* Adding a crown for the 'king' effect */
+
+.sidebar .profile img.king-image:hover+.king-crown {
+    visibility: visible;
+    /* Show crown when image is hovered */
+}
+
+.sidebar nav {
+    flex-grow: 1;
+}
+
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.sidebar nav i {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar nav a i {
+    font-size: 1.3rem;
+}
+
+.sidebar nav a:hover {
+    background-color: #a5a5a5;
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adding a subtle shadow */
+    color: #ffffff;
+    /* Gold color for a "king" effect */
+}
+
+.sidebar nav a.active {
+    background-color: #5d5d5d;
+    color: #ffffff;
+    /* Keep the gold text color for the active link */
+    font-weight: bold;
+    /* Bold for emphasis */
+    /* Add a golden border to emphasize active state */
+}
+
+.sidebar .footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+#app {
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+    padding: 12px;
+    margin-left: 250px;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header #search {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+
+/* General Styles */
+
+#app {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    left: 150px;
+}
+
+
+/* Header Styles */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6200ea;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    letter-spacing: 1px;
+    margin-left: 10px;
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    top: 10px;
+}
+
+#search {
+    padding: 12px 20px 12px 40px;
+    font-size: 1em;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #007BFF;
+    background-color: #fff;
+}
+
+.search-container .fas {
+    position: absolute;
+    left: 195px;
+    bottom: 22px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+#search:hover+.fas,
+#search:focus+.fas {
+    color: #007BFF;
+    cursor: pointer;
+}
+
+.search-container .fas {
+    position: relative;
+    color: black;
+    right: 28px;
+}
+/* Notes Container */
+.notes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+}
+
+/* Add Note Button */
+.add-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #6200ea;
+    border-radius: 50%;
+    /* Make the button circular */
+    background-color: #fff;
+    color: #6200ea;
+    font-weight: bold;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    /* Set size for the circular button */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    /* Add spacing below the button */
+}
+
+.add-note:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.plus-icon {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* Full Note Modal (Create Note Card) */
+.full-note {
+    display: block;
+    width: 100%;
+    /* Take up full width */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-height: 80vh;
+    /* Ensure it doesn't extend beyond viewport height */
+}
+
+/* Note Options */
+.note-options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.option {
+    cursor: pointer;
+    color: #6200ea;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+}
+
+.option:hover {
+    color: #3700b3;
+}
+
+/* Note Content */
+.note-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.note-message {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    resize: vertical;
+}
+
+.note-date {
+    text-align: right;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .full-note {
+        padding: 10px;
+    }
+    .add-note {
+        width: 50px;
+        height: 50px;
+        /* Adjust circular button size for smaller screens */
+    }
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    margin: 50px auto;
+    width: 70%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    max-height: 80vh;
+    box-sizing: border-box;
+}
+
+.modal-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+    border-color: #007bff;
+}
+
+.modal-content textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.modal-content .button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-content button {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #000000, #ffffff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 48%;
+}
+
+.modal-content button:hover {
+    background: linear-gradient(45deg, #000000, #a1a1a1);
+    transform: scale(1.05);
+}
+
+.modal-content button:last-of-type {
+    background: linear-gradient(45deg, #000000, #ffffff);
+}
+
+.modal-content button:last-of-type:hover {
+    background: linear-gradient(45deg, #333333, #f2f2f2);
+}
+
+.modal-content label {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+#note-bold {
+    position: relative;
+    top: 40px;
+    left: 300px;
+}
+
+#note-bullet {
+    position: relative;
+    top: 40px;
+    left: 300px;
+}
+
+button:last-of-type {
+    background-color: #ccc;
+    margin-left: 4%;
+}
+
+button:last-of-type:hover {
+    background-color: #aaa;
+}
+
+.notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.note.add-note:hover {
+    transform: scale(1.05);
+    background-color: #dce6ff;
+}
+
+.note {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    width: 500px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.note h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.note p,
+.note ul {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.note time {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.note .note-icons {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note .note-icons i {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.note .note-icons i:hover {
+    color: #333;
+}
+
+.options {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.options .option {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.options .option:hover {
+    background-color: #f0f0f0;
+}

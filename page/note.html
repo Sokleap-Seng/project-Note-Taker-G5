@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Note Taker App</title>
+    <link rel="stylesheet" href="/css/note.css">
 </head>
+
 <body>
-    
+    <div class="sidebar">
+        <div class="profile">
+            <img class="king-image" src="/image/MengHeang.jpg" alt="Profile Image">
+            <a href="#">Username</a>
+
+        </div>
+        <nav>
+            <a href="/page/note.html" class="active"><i class="fas fa-home"></i>Home</a>
+            <a href="/page/inbox.html"><i class="fas fa-inbox"></i>Inbox</a>
+            <a href="/page/trash.html"><i class="fas fa-trash"></i>Trash</a>
+            <a href="/page/setting.html"><i class="fas fa-cog"></i>Settings</a>
+            <a href="/page/help.html"><i class="fas fa-question-circle"></i>Help</a>
+        </nav>
+        <div class="footer">
+            <p>&copy; Note Taker App</p>
+        </div>
+    </div>
+
+
+    <div id="app">
+        <header>
+            <h1><i class="fa-regular fa-note-sticky"></i> Note</h3>
+            <div class="search-container">
+                <!-- Font Awesome search icon -->
+                <input type="text" id="search" placeholder="Search notes...">
+                <i class="fas fa-search"></i>
+            </div>
+        </header>
+        <section id="my-notes">
+            <div class="notes">
+                <!-- The "Add Note" button is now circular and at the start -->
+                <div class="note add-note" onclick="openModal()">
+                    <span class="plus-icon">+</span>
+                </div>
+                <!-- Note modal will appear below when creating a new note -->
+                <div class="note full-note" id="new-note-modal" style="display: none;">
+                    <div class="note-options">
+                        <span class="option edit">Edit</span>
+                        <span class="option delete">Delete <a href="/page/trash.html"></a></span>
+                    </div>
+                    <h2 class="note-title">New Note</h2>
+                    <textarea class="note-message" placeholder="Write your note here..."></textarea>
+                    <time class="note-date">January 16, 2025</time>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Modal interface input user Note -->
+    <div id="modal">
+        <div class="modal-content">
+            <h1>Create Note</h1>
+            <label for="title">Title</label>
+            <input type="text" id="note-title" placeholder="Enter note title">
+
+            <label for="message">Message</label>
+            <textarea id="note-content" placeholder="Enter note content"></textarea>
+
+            <label for="date">Date</label>
+            <input type="date" id="note-date">
+
+            <label for="note-color">Background Color (optional):</label>
+            <input type="color" id="note-color">
+
+            <label for="note-font">Font:</label>
+            <select id="note-font">
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+
+            <label for="note-font-color">Font Color (optional):</label>
+            <input type="color" id="note-font-color">
+
+            <input type="checkbox" id="note-bold">
+            <label for="note-bold">Bold Text:</label>
+
+            <div class="button-container">
+                <button onclick="saveNote()">Save Note</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/note.js"></script>
 </body>
+
 </html>
