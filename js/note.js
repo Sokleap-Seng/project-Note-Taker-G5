@@ -1,154 +1,203 @@
-const profileImage = document.querySelector('.king-image');
-const crown = document.querySelector('.king-crown');
-
-// Add hover effect for the crown visibility
-profileImage.addEventListener('mouseenter', () => {
-    crown.style.visibility = 'visible';
-});
-
-profileImage.addEventListener('mouseleave', () => {
-    crown.style.visibility = 'hidden';
-});
+// Open and Close Modal
 function openModal() {
-    const modal = document.getElementById("new-note-modal");
-    modal.style.display = modal.style.display === "none" ? "block" : "none";
+    document.getElementById('modal').style.display = 'block';
+    resetModal();  // Reset the modal inputs for new note
+
+    // Event listeners for Save and Cancel buttons
+    document.getElementById('save-note').addEventListener('click', saveNote);
+    document.getElementById('cancel-note').addEventListener('click', closeModal);
 }
 
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
 
-const notes = JSON.parse(localStorage.getItem('notes')) || [];
-const notesContainer = document.querySelector('.notes');
-const searchInput = document.getElementById('search');
-const modal = document.getElementById('modal');
-const noteTitleInput = document.getElementById('note-title');
-const noteContentInput = document.getElementById('note-content');
-const noteDateInput = document.getElementById('note-date');
-const noteColorInput = document.getElementById('note-color');
-const noteFontInput = document.getElementById('note-font');
-const noteFontColorInput = document.getElementById('note-font-color');
-const noteBoldInput = document.getElementById('note-bold');
-let currentIndex = null;
+// Reset the modal inputs
+function resetModal() {
+    document.getElementById('note-title').value = '';
+    document.getElementById('note-content').value = '';
+    document.getElementById('note-date').value = '';
+    document.getElementById('note-color').value = '#ffffff';  // Default color
+    document.getElementById('note-font-color').value = '#000000';  // Default font color
+}
+// Function to apply formatting (Bold, Italic, Underline)
+function applyFormat(command) {
+    const contentField = document.getElementById('note-content');
+    contentField.focus();
 
-function renderNotes(filter = '') {
+    if (command === 'bold') {
+        document.execCommand('bold');
+    } else if (command === 'italic') {
+        document.execCommand('italic');
+    } else if (command === 'underline') {
+        document.execCommand('underline');
+    }
+}
+
+// Function to save note
+function saveNote() {
+    const title = document.getElementById('note-title').value;
+    const content = document.getElementById('note-content').value;
+    const date = document.getElementById('note-date').value;
+    const bgColor = document.getElementById('note-color').value;
+    const fontColor = document.getElementById('note-font-color').value;
+
+    if (!title || !content) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    const note = {
+        title,
+        content,
+        date,
+        bgColor,
+        fontColor,
+        created: new Date().toISOString(),
+        pinned: false,
+    };
+
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.push(note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    closeModal();
+    loadNotes();
+}
+
+// Save Note
+function saveNote() {
+    const title = document.getElementById('note-title').value;
+    const content = document.getElementById('note-content').value;
+    const date = document.getElementById('note-date').value;
+    const bgColor = document.getElementById('note-color').value;
+    const fontColor = document.getElementById('note-font-color').value;
+
+    if (!title || !content) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    const note = {
+        title,
+        content,
+        date,
+        bgColor,
+        fontColor,
+        created: new Date().toISOString(),
+        pinned: false,
+    };
+
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.push(note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    closeModal();
+    loadNotes();
+}
+
+// Load Notes
+function loadNotes() {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const notesContainer = document.querySelector('.notes');
     notesContainer.innerHTML = `
         <div class="note add-note" onclick="openModal()">
-            <p>+ New Note</p>
+            <span class="plus-icon">+</span>
         </div>
     `;
 
-    const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filter.toLowerCase()));
-
-    filteredNotes.forEach((note, index) => {
+    notes.forEach((note, index) => {
         const noteElement = document.createElement('div');
         noteElement.className = 'note';
-        noteElement.style.backgroundColor = note.color || '';
-        noteElement.style.fontFamily = note.font || 'inherit';
-        noteElement.style.fontWeight = note.bold ? 'bold' : 'normal';
-        noteElement.style.color = note.fontColor || 'inherit'; // Apply font color
-
-        const content = note.bullet ?
-            `<ul>${note.content.split('\n').map(line => `<li>${line}</li>`).join('')}</ul>` :
-            `<p>${note.content}</p>`;
+        noteElement.style.backgroundColor = note.bgColor;
+        noteElement.style.color = note.fontColor;
 
         noteElement.innerHTML = `
-            <h3>${note.title}</h3>
-            ${content}
-            <time>${note.time}</time>
-            <div class="note-icons">
-                <i class="fas fa-ellipsis-h" onclick="showOptions(${index})"></i>
-                <div class="options" id="options-${index}" style="display: none;">
-                    <div class="option" onclick="openModal(${index})">Edit</div>
-                    <div class="option" onclick="moveToTrash(${index})">Delete</div>
+            <h2>${note.title}</h2>
+            <div>${note.content}</div>
+            <div class="note-date">Reminder: ${note.date}</div>
+            <div class="note-actions">
+                <button onclick="toggleOptions(${index})" class="more-icon">
+                    <i class="fas fa-ellipsis-h"></i> <!-- More Options Icon -->
+                </button>
+                <div id="options-${index}" class="options-dropdown" style="display: none;">
+                    <button onclick="openModalForEdit(${index})"><i class="fas fa-edit"></i> Edit</button>
+                    <button onclick="deleteNote(${index})"><i class="fas fa-trash"></i> Delete</button>
+                    <button onclick="exportNote(${index})"><i class="fas fa-download"></i> Export</button>
                 </div>
             </div>
         `;
+
         notesContainer.appendChild(noteElement);
     });
 }
 
-function showOptions(index) {
+// Toggle options (Edit, Delete, Export)
+function toggleOptions(index) {
     const options = document.getElementById(`options-${index}`);
-    options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    const isVisible = options.style.display === 'block';
+    options.style.display = isVisible ? 'none' : 'block';
 }
 
-function openModal(index = null) {
-    currentIndex = index;
-    if (index !== null) {
-        const note = notes[index];
-        noteTitleInput.value = note.title;
-        noteContentInput.value = note.content;
-        noteDateInput.value = note.date || '';
-        noteColorInput.value = note.color || '#ffffff';
-        noteFontInput.value = note.font || 'Arial';
-        noteFontColorInput.value = note.fontColor || '#000000'; // Set font color
-        noteBoldInput.checked = note.bold || false;
-    }
-    modal.style.display = 'flex';
+// Open Modal for Editing
+function openModalForEdit(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
+
+    document.getElementById('note-title').value = note.title;
+    document.getElementById('note-content').value = note.content;
+    document.getElementById('note-date').value = note.date;
+    document.getElementById('note-color').value = note.bgColor;
+    document.getElementById('note-font-color').value = note.fontColor;
+
+    document.getElementById('save-note').removeEventListener('click', saveNote);  // Remove existing event listener
+    document.getElementById('save-note').addEventListener('click', function () {
+        saveEditedNote(index);
+    });
+
+    openModal();
 }
 
-function closeModal() {
-    modal.style.display = 'none';
-    noteTitleInput.value = '';
-    noteContentInput.value = '';
-    noteDateInput.value = '';
-    noteColorInput.value = '#ffffff';
-    noteFontInput.value = 'Arial';
-    noteFontColorInput.value = '#000000'; // Reset font color
-    noteBoldInput.checked = false;
+// Save Edited Note
+function saveEditedNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
 
-    currentIndex = null;
+    note.title = document.getElementById('note-title').value;
+    note.content = document.getElementById('note-content').value;
+    note.date = document.getElementById('note-date').value;
+    note.bgColor = document.getElementById('note-color').value;
+    note.fontColor = document.getElementById('note-font-color').value;
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+    closeModal();
+    loadNotes();
 }
 
-function saveNote() {
-    const title = noteTitleInput.value;
-    const content = noteContentInput.value;
-    const date = noteDateInput.value;
-    const color = noteColorInput.value;
-    const font = noteFontInput.value;
-    const fontColor = noteFontColorInput.value;
-    const bold = noteBoldInput.checked;
-
-    if (title && content) {
-        const newNote = {
-            title,
-            content,
-            time: new Date().toLocaleString(),
-            date,
-            color: color === '#ffffff' ? null : color,
-            font,
-            fontColor,  // Store font color
-            bold
-        };
-
-        if (currentIndex !== null) {
-            notes[currentIndex] = newNote;
-        } else {
-            notes.push(newNote);
-        }
-        localStorage.setItem('notes', JSON.stringify(notes));
-        renderNotes();
-        closeModal();
-    } else {
-        alert("Please provide both title and also content for the note.");
-    }
+// Delete Note
+function deleteNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.splice(index, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadNotes();
 }
 
-function moveToTrash(index) {
-    if (index !== null) {
-        const trashedNote = notes.splice(index, 1)[0];
-        localStorage.setItem('notes', JSON.stringify(notes));
+// Export Note
+function exportNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
 
-        let trash = JSON.parse(localStorage.getItem('trash')) || [];
-        trash.push(trashedNote);
-        localStorage.setItem('trash', JSON.stringify(trash));
-
-        renderNotes();
-        closeModal();
-    }
+    // Create a folder and file (this is just a simulated file export)
+    const folderName = `Note_${note.title}`;
+    const fileContent = `Title: ${note.title}\n\nContent: ${note.content}\n\nReminder Date: ${note.date}`;
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${folderName}/${note.title}.txt`; // Simulating a folder structure
+    link.click();
 }
 
-searchInput.addEventListener('input', (e) => {
-    renderNotes(e.target.value);
+// Initialize App
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
 });
-
-renderNotes();
-

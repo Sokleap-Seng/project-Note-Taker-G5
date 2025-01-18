@@ -282,6 +282,7 @@ body {
     padding: 70px;
 }
 
+/* Hero Text */
 .hero-text {
     max-width: 500px;
 }
@@ -378,15 +379,11 @@ body {
     transition: color 0.3s ease;
 }
 
-
 .hero-image img {
     max-width: 90%;
     border-radius: 10px;
     margin-left: 100px;
-    
-
 }
-
 
 /* Main Point Section */
 
@@ -474,6 +471,7 @@ hr{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 /* Individual team slides */
@@ -501,10 +499,9 @@ hr{
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #e0e0e0;
-
-    
 }
-.team img.user-image:hover{
+
+.team img.user-image:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -521,12 +518,73 @@ hr{
     font-style: italic;
     line-height: 1.4;
 }
+
+
+
+/* Medium screens (max-width: 1078px) */
+@media screen and (max-width: 1078px) {
+    .swiper-wrapper {
+        justify-content: center;
+    }
+
+    .team {
+        max-width: 45%; /* Allow 2 items per row */
+        margin: 10px;
+    }
+
+    .team img.user-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .team .name {
+        font-size: 1.4rem;
+    }
+}
+
+/* Small screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .swiper-wrapper {
+        justify-content: center;
+    }
+
+    .team {
+        max-width: 80%; /* Allow more items to fit */
+        margin: 15px 0; /* Vertical margin to space out */
+    }
+
+    .team img.user-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .team .name {
+        font-size: 1.3rem;
+    }
+}
+
+/* Very small screens (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .team {
+        max-width: 90%; /* Almost full-width for better readability */
+        margin: 10px 0;
+    }
+
+    .team img.user-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .team .name {
+        font-size: 1.2rem;
+    }
+}
+
+/* General Footer Styles */
 footer {
     font-family: Arial, sans-serif;
     background-color: #000;
-    /* Black background */
     color: #fff;
-    /* White text */
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -557,7 +615,6 @@ footer {
 
 .social-icons a {
     color: #fff;
-    /* White icon color */
     text-decoration: none;
     font-size: 20px;
     transition: color 0.3s;
@@ -565,12 +622,9 @@ footer {
 
 .social-icons a:hover {
     color: #1da1f2;
-    /* Light blue on hover */
 }
 
-
 /* Footer Sections */
-
 .footer-section {
     flex: 1;
     min-width: 200px;
@@ -583,7 +637,6 @@ footer {
     font-weight: bold;
     margin-bottom: 10px;
     color: #1da1f2;
-    /* Light blue for headings */
 }
 
 .footer-section ul {
@@ -598,18 +651,14 @@ footer {
 .footer-section ul li a {
     text-decoration: none;
     color: #fff;
-    /* White link color */
     transition: color 0.3s;
 }
 
 .footer-section ul li a:hover {
     color: #1da1f2;
-    /* Light blue on hover */
 }
 
-
 /* Language Selector */
-
 .language-selector {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -619,7 +668,6 @@ footer {
     font-size: 14px;
     margin-right: 5px;
     color: #fff;
-    /* White label */
 }
 
 .language-selector select {
@@ -628,32 +676,255 @@ footer {
     border-radius: 4px;
     border: 1px solid #555;
     background-color: #222;
-    /* Dark background for dropdown */
     color: #fff;
-    /* White text for dropdown */
     transition: border-color 0.3s;
 }
 
 .language-selector select:focus {
     border-color: #1da1f2;
-    /* Light blue on focus */
     outline: none;
 }
 
-
 /* Copyright Section */
-
 .copyright {
     flex: 1 100%;
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
     color: #aaa;
-    /* Gray copyright text */
     border-top: 1px solid #555;
     padding-top: 10px;
 }
 
+/* Responsive Design for Small Screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 30px 15px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .hero-text .button-good-way {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fancy {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px;
+    }
+
+    .footer-logo {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-section {
+        flex: 1;
+        min-width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .footer-section h2 {
+        font-size: 20px;
+    }
+
+    .footer-section ul li {
+        font-size: 14px;
+    }
+
+    .copyright {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 1078px) {
+
+   
+    .hero {
+        flex-direction: column;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .hero-image img {
+        max-width: 80%;
+        margin-left: 0;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .fancy {
+        font-size: 14px;
+        padding: 10px 20px;
+       
+    }
+    .button-good-way{
+        margin-left: 85px;
+    }
+
+    .fancy .text {
+        font-size: 16px;
+       
+    }
+    footer {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap into multiple rows */
+        justify-content: space-between;
+        padding: 20px 10px;
+    }
+
+    .footer-logo {
+        margin-left: 0;
+        text-align: center;
+        flex: 1 100%; /* Make it take up a full row */
+    }
+
+    .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+        flex: 1 100%; /* Make it take up a full row */
+    }
+
+    .footer-section {
+        flex: 1 45%; /* Allow the footer sections to take up half the width */
+        text-align: center;
+        margin-left: 0;
+        margin-right: 10px; /* Small margin between the items */
+        margin-bottom: 20px; /* Space between the rows */
+    }
+
+    .footer-section h2 {
+        font-size: 20px;
+    }
+
+    .footer-section ul li {
+        font-size: 14px;
+    }
+
+    .copyright {
+        flex: 1 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
 
 
+/* Very Small Screens (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .hero {
+        flex-direction: column;
+        padding: 30px 15px;
+        text-align: center;
+    }
 
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .hero-text .button-good-way {
+        flex-direction: column;
+     
+        gap: 10px;
+    }
+
+    .fancy {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+    .social-icons a {
+        font-size: 18px;
+    }
+
+    .footer-section h2 {
+        font-size: 18px;
+    }
+
+    .footer-section ul li {
+        font-size: 12px;
+    }
+}
+/* Responsive Styles */
+
+/* Medium Screens (Max Width: 768px) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 18px;
+    }
+
+    .navbar .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar .title {
+        font-size: 24px;
+        margin-right: 0;
+    }
+
+    .navbar .list {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .btn-shine {
+        position: relative;
+        right: 0;
+        margin-top: 10px;
+    }
+
+    .btn-17 {
+        padding: 0.4rem 2rem;
+    }
+
+    .btn-17 .text {
+        font-size: 16px;
+    }
+}
+
+ 
