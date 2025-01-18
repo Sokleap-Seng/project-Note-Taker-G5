@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/note.css">
+    <link rel="stylesheet" href="/css/setting.css">
+    <script src="/js/setting.js" defer></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <img class="king-image" src="/image/Logo-image.png" alt="Profile Image">
+            <a href="#">Note Taker</a>
+
+        </div>
+        <nav>
+            <a href="/page/note.html"><i class="fas fa-home"></i>Home</a>
+            <a href="/page/inbox.html"><i class="fas fa-inbox"></i>Inbox</a>
+            <a href="/page/trash.html"><i class="fas fa-trash"></i>Trash</a>
+            <a href="/page/setting.html" class="active"><i class="fas fa-cog"></i>Settings</a>
+            <a href="/page/help.html"><i class="fas fa-question-circle"></i>Help</a>
+        </nav>
+        <div class="footer">
+            <p>&copy; Note Taker App</p>
+        </div>
+    </div>
+    <div id="app">
+        <header>
+            <h1><i class="fa-regular fa-note-sticky"></i> Note</h3>
+            <div class="search-container">
+                <!-- Font Awesome search icon -->
+                <input type="text" id="search" placeholder="Search notes...">
+                <i class="fas fa-search"></i>
+            </div>
+        </header>
+
+        <div class="profile-container">
+            <div class="myprofile">
+                <h1>My profile</h1>
+            </div>
+            <hr>
+            <div class="profile-header">
+                <div class="profile-img">
+                    <img src="/image/Sokleap.jpg" alt="Profile Image">
+                </div>
+                <div class="profile-info">
+                    <h1>Sokleap SENG</h1>
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+            </div>
+    
+            <div class="section">
+                <h2>Account security</h2>
+                <hr>
+                <div class="field-email">
+                    <label>Email</label>
+                    <br>
+                    <span>Sokleap.SENG@gmail.com</span>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" value="***********" disabled>
+                </div>
+                <div class="field">
+                    <div class="field-step">
+                        <label>2-Step Verification</label>
+                        <p>Add an additional layer of security to your account during login</p>
+                    </div>
+                    <button>Add verification method</button>
+                </div>
+            </div>
+    
+            <div class="section">
+                <h2>Support</h2>
+                <hr>
+                <div class="sub-field">
+                    <div class="field-support">
+                        <label>Support access</label>
+                        <p id="support-text" class="workspace-description">Support temporary access to your account so we can troubleshoot problems.</p>
+                        <p id="support-details" style="display: none;">You have access to your account for support purposes.</p>
+                    </div>
+                    <input id="s1-14" type="checkbox" class="switch">
+                </div>
+                <div class="field">
+                    <div class="field-delete">
+                        <h3>delete account</h3>
+                        <p>Permanently delete the account and remove access from all workspace</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="section">
+                <h2>My notification</h2>
+                <hr>
+                <div class="sub-field">
+                    <div class="field-mobile">
+                        <label>Mobile push notifications</label>
+                        <p id="field" class="workspace-description">Mobile push notifications</p>
+                        <p id="mobile" style="display: none;">Receive push notifications on mentions and comments via your mobile app.</p>
+                    </div>
+                    <input id="s1" type="checkbox" class="switch">
+                </div>
+                
+                <div class="field">
+                    <label>Email notifications</label>
+                </div>
+                <hr>
+                <div class="sub-field">
+                    <div class="sub-field-activity">
+                        <label>Activity in your workspace</label>
+                        <p id="activities" class="workspace-description" >Activity in workspace</p>
+                        <p id="activity" style="display: none;" >Receive emails when you get comments, mentions, page invites, reminders, access requests, and property changes.</p>
+                    </div>
+                    <input id="act" type="checkbox" class="switch">
+                </div>
+                
+                <div class="sub-field">
+                    <div class="sub-field-always">
+                        <label>Always send email notifications</label>
+                        <p id="sub-always" class="workspace-description" >Always send email</p>
+                        <p id="field-always" style="display: none;">Receive emails about activity in your workspace, even when you're active on the app.</p>
+                    </div>
+                    <input id="always" type="checkbox" class="switch">
+                </div>
+
+                <div class="sub-field">
+                    <div class="sub-field-page">
+                        <label>Page updates</label>
+                        <p id="sub-update" class="workspace-description" >Update</p>
+                        <p id="field-page" style="display: none;" >Receive email digests for changes to pages you're subscribed to.</p>
+                    </div>
+                    <input id="page" type="checkbox" class="switch">
+                </div>
+
+                <div class="sub-field">
+                    <div class="sub-field-workspace">
+                        <label>Workspace digest</label>
+                        <p id="sub-workspace" class="workspace-description">Workspace digest</p>
+                        <p id="field-space" style="display: none;" >Receive email digests of what's happening in your workspace.</p>
+                    </div>
+                    <input id="space" type="checkbox" class="switch">
+                </div>
+                
+                <div class="sub-field">
+                    <div class="sub-field-announcements">
+                        <label>Announcements and update emails</label>
+                        <p>Receive occasional emails about product launches and new features from Notion Manage settings.</p>
+                    </div>
+                    <button>Manage Settings</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
