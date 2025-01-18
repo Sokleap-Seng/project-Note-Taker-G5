@@ -1,51 +1,83 @@
-// settings.js
+// field-support
+document.getElementById("s1-14").addEventListener("change", function() {
+    const supportText = document.getElementById("support-text");
+    const supportDetails = document.getElementById("support-details");
 
-// Get modal element
-const modal = document.getElementById("settings-modal");
-const settingsLink = document.getElementById("settings-link");
-const closeModal = document.getElementsByClassName("close")[0];
-const saveButton = document.getElementById("save-settings");
-const usernameInput = document.getElementById("username");
-const profileImageInput = document.getElementById("profile-image");
-const profileImage = document.querySelector(".king-image");
-
-// Open the modal when the settings link is clicked
-settingsLink.onclick = function() {
-    modal.style.display = "block";
-}
-
-// Close the modal when the close button is clicked
-closeModal.onclick = function() {
-    modal.style.display = "none";
-}
-
-// Close the modal when clicking outside of the modal
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
     }
-}
+});
 
-// Save settings when the save button is clicked
-saveButton.onclick = function() {
-    const username = usernameInput.value;
-    const profileImageFile = profileImageInput.files[0];
+// field-mobile
+document.getElementById("s1").addEventListener("change", function() {
+    const supportText = document.getElementById("field");
+    const supportDetails = document.getElementById("mobile");
 
-    // Update username
-    if (username) {
-        const usernameLink = document.querySelector(".profile a");
-        usernameLink.textContent = username;
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
     }
+});
 
-    // Update profile image
-    if (profileImageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profileImage.src = e.target.result;
-        }
-        reader.readAsDataURL(profileImageFile);
+// sub-field-activity
+document.getElementById("act").addEventListener("change", function() {
+    const supportText = document.getElementById("activities");
+    const supportDetails = document.getElementById("activity");
+
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
     }
+});
 
-    // Close the modal after saving
-    modal.style.display = "none";
-}
+// sub-field-always
+document.getElementById("always").addEventListener("change", function() {
+    const supportText = document.getElementById("sub-always");
+    const supportDetails = document.getElementById("field-always");
+
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
+    }
+});
+
+// sub-field-page
+document.getElementById("page").addEventListener("change", function() {
+    const supportText = document.getElementById("sub-update");
+    const supportDetails = document.getElementById("field-page");
+
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
+    }
+});
+
+// sub-field-workspace
+document.getElementById("space").addEventListener("change", function() {
+    const supportText = document.getElementById("sub-workspace");
+    const supportDetails = document.getElementById("field-space");
+
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
+    }
+});

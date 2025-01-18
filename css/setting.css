@@ -1,71 +1,319 @@
-/* Existing styles... */
-
-/* Modal styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    margin-left: 20px;
+    display: flex;
+}
+.profile-info i{
+    margin-left: 450px;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.profile-info button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+.field, .sub-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.field label, .sub-field label {
     font-weight: bold;
+    font-size: 20px;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+.field input[type="checkbox"], .sub-field input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
-.settings-form {
+.field input[type="checkbox"]:hover, .sub-field input[type="checkbox"]:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.field input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 18px;
+    width: 30%;
+    position: relative;
+    right: 430px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field input[type="password"]:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+
+.field button, .sub-field button {
+    padding: 12px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.field button:hover, .sub-field button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.field button:active, .sub-field button:active {
+    background-color: #003d82;
+    transform: translateY(0);
+}
+
+
+.field h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff4d4d;
+    margin: 0 0 15px 0;
+    text-align: left;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    top: 12px;
+}
+
+.field h3:hover {
+    color: #cc0000;
+    transform: translateX(5px);
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 20px 0;
+}
+.field-email{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.field-email label{
+    font-size: 18px;
+    font-weight: bold;
+}
+.field-step p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.field button{
+    font-size: 16px;
+    width: 28%;
+}
+.field-support p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.field-delete p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.field-mobile p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.sub-field-activity p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.sub-field-always p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.sub-field-page p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.sub-field-workspace p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position: relative;
+}
+.sub-field-announcements p{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    position:relative;
+}
+.sub-field button{
+    font-size: 16px;
+    width: 25%;
 }
 
-.settings-form label {
-    margin-top: 10px;
-}
 
-.settings-form input[type="text"],
-.settings-form input[type="file"] {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#save-settings {
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#save-settings:hover {
-    background-color: #3700b3;
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .sub-field input[type=checkbox] {
+        --active: #275EFE;
+        --active-inner: #fff;
+        --focus: 2px rgba(39, 94, 254, .3);
+        --border: #BBC1E1;
+        --border-hover: #275EFE;
+        --background: #fff;
+        --disabled: #F6F8FF;
+        --disabled-inner: #E1E6F9;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 21px;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+    .sub-field input[type=checkbox]:after {
+        content: "";
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+    }
+    .sub-field input[type=checkbox]:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: .3s;
+        --d-t: .6s;
+        --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    }
+    .sub-field input[type=checkbox]:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+    }
+    .sub-field input[type=checkbox]:disabled:checked {
+        --b: var(--disabled-inner);
+        --bc: var(--border);
+    }
+    .sub-field input[type=checkbox]:disabled + label {
+        cursor: not-allowed;
+    }
+    .sub-field input[type=checkbox]:hover:not(:checked):not(:disabled) {
+        --bc: var(--border-hover);
+    }
+    .sub-field input[type=checkbox]:focus {
+        box-shadow: 0 0 0 var(--focus);
+    }
+    .sub-field input[type=checkbox]:not(.switch) {
+        width: 21px;
+    }
+    .sub-field input[type=checkbox]:not(.switch):after {
+        opacity: var(--o, 0);
+    }
+    .sub-field input[type=checkbox]:not(.switch):checked {
+        --o: 1;
+    }
+    .sub-field input[type=checkbox] + label {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-left: 4px;
+    }
+  
+    .sub-field input[type=checkbox]:not(.switch) {
+        border-radius: 7px;
+    }
+    .sub-field input[type=checkbox]:not(.switch):after {
+        width: 5px;
+        height: 9px;
+        border: 2px solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        left: 7px;
+        top: 4px;
+        transform: rotate(var(--r, 20deg));
+    }
+    .sub-field input[type=checkbox]:not(.switch):checked {
+        --r: 43deg;
+    }
+    .sub-field input[type=checkbox].switch {
+        width: 38px;
+        border-radius: 11px;
+    }
+    .sub-field input[type=checkbox].switch:after {
+        left: 2px;
+        top: 2px;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        background: var(--ab, var(--border));
+        transform: translateX(var(--x, 0));
+    }
+    .sub-field input[type=checkbox].switch:checked {
+        --ab: var(--active-inner);
+        --x: 17px;
+    }
+    .sub-field input[type=checkbox].switch:disabled:not(:checked):after {
+        opacity: 0.6;
+    }
 }
