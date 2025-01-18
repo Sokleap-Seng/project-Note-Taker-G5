@@ -128,7 +128,7 @@ function saveNote() {
         renderNotes();
         closeModal();
     } else {
-        alert("Please provide both title and content for the note.");
+        alert("Please provide both title and also content for the note.");
     }
 }
 
