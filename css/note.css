@@ -165,7 +165,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #6200ea;
+    background-color: #000000;
     color: #fff;
     padding: 10px;
     border-radius: 10px;
@@ -280,6 +280,57 @@ header h1 {
     max-height: 80vh;
     /* Ensure it doesn't extend beyond viewport height */
 }
+/* Notes Section */
+#my-notes {
+    display: flex;
+    justify-content: center; /* Center the notes horizontally */
+    align-items: center; /* Center notes vertically */
+    /* Full viewport height for centering */
+    margin: 0 auto; /* Center the section horizontally */
+    padding: 10px;/* Light background for contrast */
+    position: relative;
+    right: 20px;
+    
+   
+}
+
+/* Notes Container */
+.notes {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: center; /* Center align the notes */
+    gap: 30px; /* Space between the notes */
+    width: 100%;
+    max-width: 1200px; /* Limit the container's width */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Add Note Button */
+.add-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #6200ea;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #6200ea;
+    font-weight: bold;
+    cursor: pointer;
+    width: 300px; /* Larger size for visibility */
+    height: 100px; /* Larger size for visibility */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-note:hover {
+    transform: scale(1.2); /* Larger hover effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.plus-icon {
+    font-size: 2em; /* Bigger plus icon */
+    margin: 0;
+}
 
 /* Note Options */
 .note-options {
@@ -324,20 +375,9 @@ header h1 {
 .note-date {
     text-align: right;
     font-size: 0.9em;
-    color: #888;
+    color: #ffffff;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .full-note {
-        padding: 10px;
-    }
-    .add-note {
-        width: 50px;
-        height: 50px;
-        /* Adjust circular button size for smaller screens */
-    }
-}
 
 #modal {
     display: none;
@@ -464,13 +504,6 @@ button:last-of-type:hover {
     background-color: #aaa;
 }
 
-.notes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-    justify-content: center;
-}
 
 .note.add-note:hover {
     transform: scale(1.05);
@@ -485,67 +518,7 @@ button:last-of-type:hover {
     padding: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.note:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.note h3 {
-    margin: 0 0 8px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.note p,
-.note ul {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.note time {
-    display: block;
-    margin-top: 8px;
-    font-size: 12px;
-}
-
-.note .note-icons {
-    margin-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.note .note-icons i {
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.note .note-icons i:hover {
-    color: #333;
-}
-
-.options {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.options .option {
-    padding: 8px 12px;
-    font-size: 14px;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.options .option:hover {
-    background-color: #f0f0f0;
+    
 }
 /* Rich Text Formatting Tools */
 .formatting-tools {
@@ -563,7 +536,7 @@ button:last-of-type:hover {
 }
 
 .formatting-tools button:hover {
-    background: #e9e9e9;
+    background: #ffffff;
 }
 
 /* Modal Styling */
@@ -592,4 +565,230 @@ button:last-of-type:hover {
 .button-container {
     display: flex;
     justify-content: space-between;
+}
+
+/* Option Buttons */
+.options-dropdown button {
+    background-color: white;
+    color: #000000; /* Light text for contrast */
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Inner red glow */
+    position: relative;
+    top: 8px;
+    right: 10px;
+}
+
+.options-dropdown button i {
+    margin-right: 10px;
+}
+
+
+/* More Options Button */
+.more-icon {
+    background: linear-gradient(145deg, #1c1c1e, #2c2c2e);
+    border: 2px solid #ececec;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 8px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    right: 40px;
+
+}
+
+/* Dropdown Animation */
+.options-dropdown {
+    animation: dropdown-fade 0.3s ease;
+    
+}
+/* Main container for notes */
+.notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+    
+}
+
+/* Add Note Button */
+.note.add-note {
+    background-color: #FFD700; /* Gold color for royal feel */
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.note.add-note:hover {
+    background-color: #FFB900;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plus-icon {
+    font-size: 2em;
+    color: #4B4B4B; /* Dark Gray */
+
+}
+
+/* Styling for individual notes */
+.note {
+    width: 1135px;
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    position: relative;
+    left: 10px;
+}
+
+.note:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Title of the note */
+.note h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5em;
+    color: #ffffff; /* Dark Slate Gray */
+    margin-bottom: 40px;
+}
+
+/* Content of the note */
+.note div {
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* Date styling */
+.note-date {
+    font-size: 0.9em;
+    color: #ffffff; /* Light gray for the date */
+    font-style: italic;
+    position: relative;
+    right: 10px;
+    margin-top: 60px;
+}
+
+/* Note Actions Section */
+.note-actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+
+}
+.sidebar #trashed-notes h2{
+    margin-left: 22px;
+    position: relative;
+    bottom: 300px;
+}
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea#note-content {
+    width: 100%;
+    min-height: 150px;
+    font-family: Arial, sans-serif; /* Default font */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: vertical; /* Allow user to resize vertically */
+}
+
+textarea:focus {
+    outline: 2px solid #007BFF; /* Highlight border on focus */
+}
+.formatting-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.font-option, .text-style {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.text-style label {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+select {
+    padding: 5px;
+    font-size: 14px;
+}
+.text-style {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.text-style label {
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea.bold {
+    font-weight: bold;
+    position: relative;
+   
+}
+
+textarea.italic {
+    font-style: italic;
+}
+
+textarea.underline {
+    text-decoration: underline;
+}
+#bold-text{
+    position: relative;
+    bottom: 38px;
+    left: 400px;
+}
+#italic-text{
+    position: relative;
+    bottom: 38px;
+    left: 400px;
+}
+#underline-text{
+    position: relative;
+    bottom: 38px;
+    left: 400px;
 }

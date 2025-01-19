@@ -18,13 +18,21 @@
         <nav>
             <a href="/page/note.html" class="active"><i class="fas fa-home"></i> Home</a>
             <a href="/page/inbox.html"><i class="fas fa-inbox"></i> Inbox</a>
-            <a href="/page/trash.html"><i class="fas fa-trash"></i> Trash</a>
             <a href="/page/setting.html"><i class="fas fa-cog"></i> Settings</a>
             <a href="/page/help.html"><i class="fas fa-question-circle"></i> Help</a>
         </nav>
+        <div id="trashed-notes">
+            <h2>
+                <i class="fas fa-trash-alt"></i> Trash
+            </h2>
+            <div id="my-trashed-notes">
+                <!-- Trashed notes will dynamically load here -->
+            </div>
+        </div>        
         <div class="footer">
             <p>&copy; Note Taker App</p>
         </div>
+
     </div>
 
     <div id="app">
@@ -48,25 +56,48 @@
     <div id="modal" style="display: none;">
         <div class="modal-content">
             <h1>Create Note</h1>
-            
+    
             <!-- Title Field -->
             <label for="title">Title</label>
             <input type="text" id="note-title" placeholder="Enter note title">
     
-            <!-- Message Field -->
-            <label for="message">Message</label>
-            <textarea id="note-content" placeholder="Enter note content"></textarea>
+            <!-- Formatting Toolbar -->
+            <div class="message-container">
+                <label for="message">Message</label>
+                <textarea id="note-content" placeholder="Enter your note here..." oninput="updatePreview()" onkeydown="trackLine(event)"></textarea>
     
-            <!-- Formatting Tools (Bold, Italic, Underline) -->
-            <div class="formatting-tools">
-                <label for="bold">Bold</label>
-                <input type="checkbox" id="bold" onchange="applyFormat('bold')">
-                
-                <label for="italic">Italic</label>
-                <input type="checkbox" id="italic" onchange="applyFormat('italic')">
-                
-                <label for="underline">Underline</label>
-                <input type="checkbox" id="underline" onchange="applyFormat('underline')">
+                <!-- Formatting Tools -->
+                <div class="formatting-tools">
+                    <!-- Font Style Selection -->
+                    <div class="font-option">
+                        <label for="font-style">Font Style:</label>
+                        <select id="font-style" onchange="changeFontStyle()">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Lucida Console">Lucida Console</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Impact">Impact</option>
+                        </select>
+                    </div>
+    
+                    <!-- Text Formatting (Bold, Italic, Underline) -->
+                    <div class="text-style">
+                        <label for="bold-text">Bold</label>
+                        <input type="checkbox" id="bold-text" onclick="toggleFormat('bold')">
+                    
+                        <label for="italic-text">Italic</label>
+                        <input type="checkbox" id="italic-text" onclick="toggleFormat('italic')">
+                    
+                        <label for="underline-text">Underline</label>
+                        <input type="checkbox" id="underline-text" onclick="toggleFormat('underline')">
+                    </div>
+                    
+                </div>
             </div>
     
             <!-- Date Input for Reminder -->
@@ -77,10 +108,7 @@
             <label for="note-color">Background Color:</label>
             <input type="color" id="note-color">
     
-            <!-- Font Color Picker -->
-            <label for="note-font-color">Font Color:</label>
-            <input type="color" id="note-font-color">
-    
+            <!-- Font Color Picker -->  
             <!-- Save and Cancel Buttons -->
             <div class="button-container">
                 <button id="save-note">Save Note</button>
@@ -88,6 +116,11 @@
             </div>
         </div>
     </div>
+    
+    <script>
+
+    </script>
+    
     
     <script src="/js/note.js"></script>
 </body>
