@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/note.css">
+    <link rel="stylesheet" href="/css/trash.css">
+  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <img class="king-image" src="/image/MengHeang.jpg" alt="Profile Image">
+            <a href="#">Username</a>
+
+        </div>
+        <nav>
+            <a href="/page/note.html" ><i class="fas fa-home"></i>Home</a>
+            <a href="/page/inbox.html"><i class="fas fa-inbox"></i>Inbox</a>
+            <a href="/page/trash.html" class="active"><i class="fas fa-trash"></i>Trash</a>
+            <a href="/page/setting.html"><i class="fas fa-cog"></i>Settings</a>
+            <a href="/page/help.html"><i class="fas fa-question-circle"></i>Help</a>
+        </nav>
+        <div class="footer">
+            <p>&copy; Note Taker App</p>
+        </div>
+    </div>
+
+
+    <div id="app">
+        <header>
+            <h1><i class="fa-regular fa-note-sticky"></i> Note</h3>
+            <div class="search-container">
+                <!-- Font Awesome search icon -->
+                <input type="text" id="search" placeholder="Search notes...">
+                <i class="fas fa-search"></i>
+            </div>
+        </header>
+
+        <div class="trash-container">
+            <h1>Trash</h1>
+            <ul id="trash-list">
+              
+              <li>
+                <input type="checkbox">
+                <span>Name: File 1</span>
+                <button class="restore-btn">↩</button>
+                <button class="delete-btn">🗑</button>
+              </li>
+              <li>
+                <input type="checkbox">
+                <span>Name: File 2</span>
+                <button class="restore-btn">↩</button>
+                <button class="delete-btn">🗑</button>
+              </li>
+            </ul>
+          </div>
+    </div>
+    <script src="/js/trash.js"></script>
+</body>
+</html>

@@ -2,19 +2,17 @@ const profileImage = document.querySelector('.king-image');
 const crown = document.querySelector('.king-crown');
 
 // Add hover effect for the crown visibility
-profileImage.addEventListener('mouseenter', () => {
-    crown.style.visibility = 'visible';
-});
+if (profileImage && crown) {
+    profileImage.addEventListener('mouseenter', () => {
+        crown.style.visibility = 'visible';
+    });
 
-profileImage.addEventListener('mouseleave', () => {
-    crown.style.visibility = 'hidden';
-});
-function openModal() {
-    const modal = document.getElementById("new-note-modal");
-    modal.style.display = modal.style.display === "none" ? "block" : "none";
+    profileImage.addEventListener('mouseleave', () => {
+        crown.style.visibility = 'hidden';
+    });
 }
 
-
+// DOM Elements
 const notes = JSON.parse(localStorage.getItem('notes')) || [];
 const notesContainer = document.querySelector('.notes');
 const searchInput = document.getElementById('search');
@@ -28,10 +26,11 @@ const noteFontColorInput = document.getElementById('note-font-color');
 const noteBoldInput = document.getElementById('note-bold');
 let currentIndex = null;
 
+// Function to render notes
 function renderNotes(filter = '') {
     notesContainer.innerHTML = `
         <div class="note add-note" onclick="openModal()">
-            <p>+ New Note</p>
+            <span class="plus-icon">+</span>
         </div>
     `;
 
@@ -43,11 +42,11 @@ function renderNotes(filter = '') {
         noteElement.style.backgroundColor = note.color || '';
         noteElement.style.fontFamily = note.font || 'inherit';
         noteElement.style.fontWeight = note.bold ? 'bold' : 'normal';
-        noteElement.style.color = note.fontColor || 'inherit'; // Apply font color
+        noteElement.style.color = note.fontColor || 'inherit';
 
-        const content = note.bullet ?
-            `<ul>${note.content.split('\n').map(line => `<li>${line}</li>`).join('')}</ul>` :
-            `<p>${note.content}</p>`;
+        const content = note.bullet
+            ? `<ul>${note.content.split('\n').map(line => `<li>${line}</li>`).join('')}</ul>`
+            : `<p>${note.content}</p>`;
 
         noteElement.innerHTML = `
             <h3>${note.title}</h3>
@@ -65,11 +64,13 @@ function renderNotes(filter = '') {
     });
 }
 
+// Function to show options menu
 function showOptions(index) {
     const options = document.getElementById(`options-${index}`);
     options.style.display = options.style.display === 'block' ? 'none' : 'block';
 }
 
+// Function to open modal
 function openModal(index = null) {
     currentIndex = index;
     if (index !== null) {
@@ -79,12 +80,13 @@ function openModal(index = null) {
         noteDateInput.value = note.date || '';
         noteColorInput.value = note.color || '#ffffff';
         noteFontInput.value = note.font || 'Arial';
-        noteFontColorInput.value = note.fontColor || '#000000'; // Set font color
+        noteFontColorInput.value = note.fontColor || '#000000';
         noteBoldInput.checked = note.bold || false;
     }
     modal.style.display = 'flex';
 }
 
+// Function to close modal
 function closeModal() {
     modal.style.display = 'none';
     noteTitleInput.value = '';
@@ -92,12 +94,13 @@ function closeModal() {
     noteDateInput.value = '';
     noteColorInput.value = '#ffffff';
     noteFontInput.value = 'Arial';
-    noteFontColorInput.value = '#000000'; // Reset font color
+    noteFontColorInput.value = '#000000';
     noteBoldInput.checked = false;
 
     currentIndex = null;
 }
 
+// Function to save note
 function saveNote() {
     const title = noteTitleInput.value;
     const content = noteContentInput.value;
@@ -115,9 +118,16 @@ function saveNote() {
             date,
             color: color === '#ffffff' ? null : color,
             font,
-            fontColor,  // Store font color
+            fontColor,
             bold
         };
+
+        // Check if the note is already in the trash
+        const trashedNotes = JSON.parse(localStorage.getItem('trash')) || [];
+        if (trashedNotes.some(trashedNote => trashedNote.title === title)) {
+            alert("This note is already in the trash.");
+            return;
+        }
 
         if (currentIndex !== null) {
             notes[currentIndex] = newNote;
@@ -132,6 +142,7 @@ function saveNote() {
     }
 }
 
+// Function to move note to trash
 function moveToTrash(index) {
     if (index !== null) {
         const trashedNote = notes.splice(index, 1)[0];
@@ -146,9 +157,10 @@ function moveToTrash(index) {
     }
 }
 
+// Search notes based on input
 searchInput.addEventListener('input', (e) => {
     renderNotes(e.target.value);
 });
 
+// Initial rendering of notes
 renderNotes();
-

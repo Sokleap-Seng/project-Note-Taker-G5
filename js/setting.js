@@ -1,51 +1,65 @@
-// settings.js
+// JavaScript for managing Trash functionality with delete and restore options using LocalStorage
 
-// Get modal element
-const modal = document.getElementById("settings-modal");
-const settingsLink = document.getElementById("settings-link");
-const closeModal = document.getElementsByClassName("close")[0];
-const saveButton = document.getElementById("save-settings");
-const usernameInput = document.getElementById("username");
-const profileImageInput = document.getElementById("profile-image");
-const profileImage = document.querySelector(".king-image");
+document.addEventListener("DOMContentLoaded", () => {
+    const trashList = document.getElementById("trash-list");
 
-// Open the modal when the settings link is clicked
-settingsLink.onclick = function() {
-    modal.style.display = "block";
-}
-
-// Close the modal when the close button is clicked
-closeModal.onclick = function() {
-    modal.style.display = "none";
-}
-
-// Close the modal when clicking outside of the modal
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Save settings when the save button is clicked
-saveButton.onclick = function() {
-    const username = usernameInput.value;
-    const profileImageFile = profileImageInput.files[0];
-
-    // Update username
-    if (username) {
-        const usernameLink = document.querySelector(".profile a");
-        usernameLink.textContent = username;
+    // Load trash items from LocalStorage
+    function loadTrash() {
+        const trashItems = JSON.parse(localStorage.getItem("trash")) || [];
+        trashList.innerHTML = "";
+        trashItems.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <input type="checkbox">
+                <span>Name: ${item}</span>
+                <button class="restore-btn" data-index="${index}">↩</button>
+                <button class="delete-btn" data-index="${index}">🗑</button>
+            `;
+            trashList.appendChild(li);
+        });
     }
 
-    // Update profile image
-    if (profileImageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profileImage.src = e.target.result;
+    // Save trash items to LocalStorage
+    function saveTrash(items) {
+        localStorage.setItem("trash", JSON.stringify(items));
+    }
+
+    // Restore item from trash
+    trashList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("restore-btn")) {
+            const index = e.target.getAttribute("data-index");
+            let trashItems = JSON.parse(localStorage.getItem("trash")) || [];
+            let restoredItem = trashItems.splice(index, 1)[0];
+            saveTrash(trashItems);
+            alert(`Restored: ${restoredItem}`);
+            loadTrash();
         }
-        reader.readAsDataURL(profileImageFile);
-    }
+    });
 
-    // Close the modal after saving
-    modal.style.display = "none";
-}
+    // Permanently delete item from trash
+    trashList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete-btn")) {
+            const index = e.target.getAttribute("data-index");
+            let trashItems = JSON.parse(localStorage.getItem("trash")) || [];
+            let deletedItem = trashItems.splice(index, 1)[0];
+            saveTrash(trashItems);
+            alert(`Deleted permanently: ${deletedItem}`);
+            loadTrash();
+        }
+    });
+
+    // Delete all items in trash
+    const deleteAllBtn = document.createElement("button");
+    deleteAllBtn.textContent = "Delete All";
+    deleteAllBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to delete all items permanently?")) {
+            localStorage.removeItem("trash");
+            loadTrash();
+            alert("All items have been deleted.");
+        }
+    });
+    document.querySelector(".trash-container").appendChild(deleteAllBtn);
+
+    // Initialize Trash list on page load
+    loadTrash();
+});
