@@ -1,3 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
 .profile-container {
     max-width: 800px;
     margin: 40px auto;
@@ -5,6 +15,7 @@
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
 }
 
 .profile-header {
@@ -24,7 +35,8 @@
     display: flex;
 }
 .profile-info i{
-    margin-left: 450px;
+    margin-left: 430px;
+    cursor: pointer;
 }
 
 .profile-info h1 {
@@ -43,8 +55,6 @@
     font-size: 16px;
 }
 
-
-
 .profile-container {
     max-width: 800px;
     margin: 40px auto;
@@ -54,8 +64,10 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.section {
-    margin-bottom: 60px;
+.section .field-password{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .field, .sub-field {
@@ -83,18 +95,17 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.field input[type="password"] {
-    border: 1px solid #ccc;
+.field-password input[type="password"] {
+    border: 1px solid #9a9999;
     border-radius: 6px;
-    padding: 10px;
-    font-size: 18px;
+    padding: 5px;
     width: 30%;
+    margin-left: 20px;
     position: relative;
-    right: 430px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.field input[type="password"]:hover {
+.field-password input[type="password"]:hover {
     border-color: #007bff;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
@@ -134,22 +145,19 @@
 }
 
 .field h3:hover {
-    color: #cc0000;
     transform: translateX(5px);
 }
 
 hr {
     border: none;
     border-top: 2px solid #ddd;
-    margin: 20px 0;
 }
-.field-email{
+.sub-field-email{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
     font-size: 14px;
 }
-.field-email label{
+.sub-field-email label{
     font-size: 18px;
     font-weight: bold;
 }
@@ -176,6 +184,10 @@ hr {
     color: rgb(100, 100, 100);
     font-size: 14px;
     position: relative;
+}
+.field-notifications{
+    font-weight: bold;
+    font-size: 20px;
 }
 .sub-field-activity p{
     color: rgb(100, 100, 100);
@@ -316,4 +328,380 @@ hr {
     .sub-field input[type=checkbox].switch:disabled:not(:checked):after {
         opacity: 0.6;
     }
+}
+ @media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .content {
+        margin-left: 220px;
+        margin-top: 80px;
+    }
+    .profile a { 
+        width: 30px;
+        display: inline-block;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav a p {
+        display: inline-block;
+    }
+
+    nav a {
+        width: 130px;
+        height: 8vh;
+        display: inline-block;
+    }
+
+    .footer {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    #app {
+        width: 600px;
+        margin-right: 300px;
+        position: relative;
+        right: 200px;
+    }
+
+    #app .profile-container {
+        margin: 0px;
+        margin-left: 28px;
+    }
+
+    #app .profile-container .myprofile {
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #app .profile-container .profile-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #app .profile-container .profile-header .profile-img img {
+        width: 100px;
+        height: 11vh;
+    }
+    #app .profile-container .profile-header .profile-info h1 {
+        font-size: 16px;
+    }
+    .profile-info h1 {
+        font-size: 10px; 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 46px;
+        white-space: nowrap; 
+        text-align: center; 
+    }
+    .fa-pen {
+        display: inline-block;
+        position: relative;
+        right: 60px;
+    }
+
+    .section h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    .section .sub-field-email label {
+        font-size: 14px;
+    }
+
+    .section .sub-field-email p  {
+        font-size: 12px;
+    }
+
+    .section .field-password label {
+        font-size: 14px;
+    }
+
+    .section .field-password input[type=password] {
+        display: inline-block;
+    }
+    .section .field .field-step label {
+        font-size: 14px;
+        margin-right: 160px;
+    }
+
+    .section .field .field-step p {
+        font-size: 10px;
+    }
+
+    .section button {
+        font-size: 8px;
+        width: 30%;
+    }
+
+    .section .sub-field label {
+        font-size: 14px;
+    }
+
+    .section .sub-field .field-support p {
+        font-size: 10px;
+    }
+
+    .section .field .field-delete h3 {
+        font-size: 14px;
+    }
+
+    .section .field .field-delete p {
+        font-size: 10px;
+    }
+
+    .section .sub-field .field-mobile label {
+        font-size: 14px;
+    }
+
+    .section .sub-field .field-mobile p {
+        font-size: 10px;
+    }
+
+    .field-notifications label{
+        font-size: 12px;
+        margin-right: 40px;
+        font-weight: bold;
+    }
+
+    .sub-field .sub-field-activity label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-activity p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-always label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-always p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-page label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-page p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-workspace label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-workspace p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-announcements {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sub-field .sub-field-announcements label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-announcements p {
+        display: inline-block;
+    }
+
+    .sub-field .button {
+        width: 60%;
+        font-size: 10px;
+        height: 8vh;
+        margin-top: 30px;
+    }
+
+    .sub-field input[type=checkbox] {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
+        height: 170vh;
+    }
+
+    .content {
+        margin: 0;
+        padding: 10px;
+        top: 30px;
+    }
+    .profile a{ 
+        width: 20px;
+        display: none;
+    }
+    nav{
+        width: 100px;
+    }
+    nav a{
+        width: 110px;
+    }
+    .footer{
+        width: 100%;
+        font-size: 3px;
+    }
+    .footer p{
+        font-size: 7px;
+    }
+
+    #app{
+        width: 500px;
+        margin-right: 800px;
+    }
+    #app .profile-container{
+        margin: 0;
+    }
+    #app .profile-container .myprofile{
+        font-size: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #app .profile-container .profile-header{
+        display: flex;
+        flex-direction: column;
+    }
+    #app .profile-container .profile-header .profile-img img {
+        width: 50px;
+        height: 8vh;
+
+    }
+    #app .profile-container .profile-header .profile-info{
+        width: 100%;    
+    }
+    .profile-info h1{
+        font-size: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-right: 30px;
+    }   
+    .fa-pen{
+        display: none;
+    }
+    .section h2{
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    hr{
+        margin: 0;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .section .sub-field-email label{
+        font-size: 8px;
+    }
+    .section .sub-field-email p{
+        font-size: 10px;
+    }
+    .section .field-password label{
+        font-size: 12px;
+    }
+    .section .field-password input[type=password]{
+        display: none;
+       
+    }
+    .section .field{
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+    .section .field .field-step label{
+        font-size: 12px;
+    }
+    .section .field .field-step p{
+        font-size: 8px;
+    }
+    .section button{
+        font-size: 8px;
+        width: 90%;   
+    }
+    .section .sub-field label{
+        font-size: 12px;
+    }
+    .section .sub-field .field-support p{
+        font-size: 8px;
+    }
+    .section .field .field-delete h3{
+        font-size: 12px;
+    }
+    .section .field .field-delete p{
+        font-size: 8px;
+    }
+    .section .sub-field .field-mobile label{
+        font-size: 12px;
+    }
+    .section .sub-field .field-mobile p{
+        font-size: 8px;
+    }
+    .field-notifications label{
+        font-size: 12px;
+        margin-right: 40px;
+        font-weight: bold;
+    }
+    .sub-field .sub-field-activity label{
+        font-size: 12px;
+    }
+    .sub-field .sub-field-activity p{
+        font-size: 8px;
+    }
+    .sub-field .sub-field-always label{
+        font-size: 12px;
+    }
+    .sub-field .sub-field-always p{
+        font-size: 8px;
+    } 
+    .sub-field .sub-field-page label{
+        font-size: 12px;
+    }
+    .sub-field .sub-field-page p{
+        font-size: 8px;
+    }
+    .sub-field .sub-field-workspace label{
+        font-size: 12px;
+    }
+    .sub-field .sub-field-workspace p{
+        font-size: 8px;
+    }
+    .sub-field .sub-field-announcements{
+        display: flex;
+        flex-direction: column;
+    }
+    .sub-field .sub-field-announcements label{
+        font-style: 12px;
+    }
+    .sub-field .sub-field-announcements p{
+        display: none;
+    }
+    .sub-field .button{
+        width: 100%;
+        font-size: 6px;
+        height: 8vh;
+        margin-top: 20px;
+    }
+   .sub-field input[type=checkbox]{
+       display: none;
+   }
 }
