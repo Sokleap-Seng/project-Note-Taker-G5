@@ -7,6 +7,7 @@ body {
     background-color: #ffffff;
     overflow-x: hidden;
 }
+
 .profile-container {
     max-width: 800px;
     margin: 40px auto;
@@ -14,6 +15,7 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
 }
 
 .profile-header {
@@ -183,6 +185,10 @@ hr {
     font-size: 14px;
     position: relative;
 }
+.field-notifications{
+    font-weight: bold;
+    font-size: 20px;
+}
 .sub-field-activity p{
     color: rgb(100, 100, 100);
     font-size: 14px;
@@ -323,20 +329,22 @@ hr {
         opacity: 0.6;
     }
 }
-/* Responsive 768 */
-@media (max-width: 768px) {
+ @media (max-width: 768px) {
     .sidebar {
-        width: 150px;
-        border-radius: 0px 20px 20px 0px;   
+        width: 100%;
     }
 
+    .content {
+        margin-left: 220px;
+        margin-top: 80px;
+    }
     .profile a { 
         width: 30px;
         display: inline-block;
     }
 
     nav {
-        width: 100px;
+        width: 100%;
     }
 
     nav a p {
@@ -384,7 +392,7 @@ hr {
 
     #app .profile-container .profile-header .profile-img img {
         width: 100px;
-        height: 20vh;
+        height: 11vh;
     }
     #app .profile-container .profile-header .profile-info h1 {
         font-size: 16px;
@@ -529,28 +537,26 @@ hr {
     }
 }
 
-
-
-
-
-/*  Responsive 400*/
 @media (max-width: 400px) {
-    .sidebar{
-        width: 80px;
-        border-radius: 0px 10px 10px 0px;
+    .sidebar {
+        width: 100%;
+        height: 170vh;
+    }
+
+    .content {
+        margin: 0;
+        padding: 10px;
+        top: 30px;
     }
     .profile a{ 
         width: 20px;
         display: none;
     }
     nav{
-        width: 40px;
-    }
-    nav a p{
-        display: none;
+        width: 100px;
     }
     nav a{
-        width: 40px;
+        width: 110px;
     }
     .footer{
         width: 100%;
@@ -561,8 +567,8 @@ hr {
     }
 
     #app{
-        width: 300px;
-        margin-right: 900px;
+        width: 500px;
+        margin-right: 800px;
     }
     #app .profile-container{
         margin: 0;
@@ -579,7 +585,7 @@ hr {
     }
     #app .profile-container .profile-header .profile-img img {
         width: 50px;
-        height: 10vh;
+        height: 8vh;
 
     }
     #app .profile-container .profile-header .profile-info{
