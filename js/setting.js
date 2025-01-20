@@ -81,3 +81,6 @@ document.getElementById("space").addEventListener("change", function() {
         supportDetails.style.display = "none";
     }
 });
+
+
+
