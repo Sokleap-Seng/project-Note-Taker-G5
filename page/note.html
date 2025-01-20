@@ -21,14 +21,7 @@
             <a href="/page/setting.html"><i class="fas fa-cog"></i> Settings</a>
             <a href="/page/help.html"><i class="fas fa-question-circle"></i> Help</a>
         </nav>
-        <div id="trashed-notes">
-            <h2>
-                <i class="fas fa-trash-alt"></i> Trash
-            </h2>
-            <div id="my-trashed-notes">
-                <!-- Trashed notes will dynamically load here -->
-            </div>
-        </div>        
+     
         <div class="footer">
             <p>&copy; Note Taker App</p>
         </div>
@@ -52,6 +45,8 @@
             </div>
         </section>
     </div>
+
+    
 
     <div id="modal" style="display: none;">
         <div class="modal-content">
@@ -108,17 +103,33 @@
             <label for="note-color">Background Color:</label>
             <input type="color" id="note-color">
     
-            <!-- Font Color Picker -->  
+  
+             <!-- Font Color Picker -->
+            <label for="note-font-color">Font Color:</label>
+            <input type="color" id="note-font-color" value="#000000">
+
             <!-- Save and Cancel Buttons -->
             <div class="button-container">
                 <button id="save-note">Save Note</button>
                 <button id="cancel-note">Cancel</button>
             </div>
+            <div class="import-container">
+                <label for="import-file" class="import-btn">
+                    <i class="fas fa-file-import"></i> Import File
+                    <input type="file" id="import-file" accept=".txt, .pdf" style="display: none;">
+                </label>
+                <label for="import-folder" class="import-btn">
+                    <i class="fas fa-folder-open"></i> Import Folder
+                    <input type="file" id="import-folder" webkitdirectory directory style="display: none;">
+                </label>
+            </div>
+            
+            
         </div>
     </div>
     
     <script>
-
+        
     </script>
     
     

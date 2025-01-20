@@ -792,3 +792,27 @@ textarea.underline {
     bottom: 38px;
     left: 400px;
 }
+.import-container {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.import-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.import-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.formatting-tools {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
