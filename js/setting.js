@@ -1,3 +1,18 @@
+// sub-field-email
+document.getElementById("email").addEventListener("change", function() {
+    const supportText = document.getElementById("sub-email");
+    const supportDetails = document.getElementById("field-email");
+
+    if (this.checked) {
+        supportText.style.display = "none";
+        supportDetails.style.display = "block";
+    } else {
+        supportText.style.display = "block";
+        supportDetails.style.display = "none";
+    }
+});
+
+
 // field-support
 document.getElementById("s1-14").addEventListener("change", function() {
     const supportText = document.getElementById("support-text");

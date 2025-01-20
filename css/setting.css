@@ -143,7 +143,6 @@ body {
 }
 
 .field h3:hover {
-    /* color: #cc0000; */
     transform: translateX(5px);
 }
 
@@ -151,13 +150,12 @@ hr {
     border: none;
     border-top: 2px solid #ddd;
 }
-.field-email{
+.sub-field-email{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
     font-size: 14px;
 }
-.field-email label{
+.sub-field-email label{
     font-size: 18px;
     font-weight: bold;
 }
@@ -325,11 +323,220 @@ hr {
         opacity: 0.6;
     }
 }
+/* Responsive 768 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+        border-radius: 0px 20px 20px 0px;   
+    }
 
-/*  Responsive */
+    .profile a { 
+        width: 30px;
+        display: inline-block;
+    }
+
+    nav {
+        width: 100px;
+    }
+
+    nav a p {
+        display: inline-block;
+    }
+
+    nav a {
+        width: 130px;
+        height: 8vh;
+        display: inline-block;
+    }
+
+    .footer {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    #app {
+        width: 600px;
+        margin-right: 300px;
+        position: relative;
+        right: 200px;
+    }
+
+    #app .profile-container {
+        margin: 0px;
+        margin-left: 28px;
+    }
+
+    #app .profile-container .myprofile {
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #app .profile-container .profile-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #app .profile-container .profile-header .profile-img img {
+        width: 100px;
+        height: 20vh;
+    }
+    #app .profile-container .profile-header .profile-info h1 {
+        font-size: 16px;
+    }
+    .profile-info h1 {
+        font-size: 10px; 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 46px;
+        white-space: nowrap; 
+        text-align: center; 
+    }
+    .fa-pen {
+        display: inline-block;
+        position: relative;
+        right: 60px;
+    }
+
+    .section h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    .section .sub-field-email label {
+        font-size: 14px;
+    }
+
+    .section .sub-field-email p  {
+        font-size: 12px;
+    }
+
+    .section .field-password label {
+        font-size: 14px;
+    }
+
+    .section .field-password input[type=password] {
+        display: inline-block;
+    }
+    .section .field .field-step label {
+        font-size: 14px;
+        margin-right: 160px;
+    }
+
+    .section .field .field-step p {
+        font-size: 10px;
+    }
+
+    .section button {
+        font-size: 8px;
+        width: 30%;
+    }
+
+    .section .sub-field label {
+        font-size: 14px;
+    }
+
+    .section .sub-field .field-support p {
+        font-size: 10px;
+    }
+
+    .section .field .field-delete h3 {
+        font-size: 14px;
+    }
+
+    .section .field .field-delete p {
+        font-size: 10px;
+    }
+
+    .section .sub-field .field-mobile label {
+        font-size: 14px;
+    }
+
+    .section .sub-field .field-mobile p {
+        font-size: 10px;
+    }
+
+    .field-notifications label{
+        font-size: 12px;
+        margin-right: 40px;
+        font-weight: bold;
+    }
+
+    .sub-field .sub-field-activity label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-activity p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-always label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-always p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-page label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-page p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-workspace label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-workspace p {
+        font-size: 10px;
+    }
+
+    .sub-field .sub-field-announcements {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sub-field .sub-field-announcements label {
+        font-size: 14px;
+    }
+
+    .sub-field .sub-field-announcements p {
+        display: inline-block;
+    }
+
+    .sub-field .button {
+        width: 60%;
+        font-size: 10px;
+        height: 8vh;
+        margin-top: 30px;
+    }
+
+    .sub-field input[type=checkbox] {
+        display: inline-block;
+    }
+}
+
+
+
+
+
+/*  Responsive 400*/
 @media (max-width: 400px) {
     .sidebar{
-        width: 60px;
+        width: 80px;
         border-radius: 0px 10px 10px 0px;
     }
     .profile a{ 
@@ -344,7 +551,6 @@ hr {
     }
     nav a{
         width: 40px;
-        display: none;
     }
     .footer{
         width: 100%;
@@ -356,7 +562,7 @@ hr {
 
     #app{
         width: 300px;
-        margin-right: 500px;
+        margin-right: 900px;
     }
     #app .profile-container{
         margin: 0;
@@ -373,7 +579,7 @@ hr {
     }
     #app .profile-container .profile-header .profile-img img {
         width: 50px;
-        height: 12vh;
+        height: 10vh;
 
     }
     #app .profile-container .profile-header .profile-info{
@@ -385,7 +591,6 @@ hr {
         display: flex;
         justify-content: center;
         margin-right: 30px;
-        /* background: #000; */
     }   
     .fa-pen{
         display: none;
@@ -399,10 +604,10 @@ hr {
         padding: 0;
         margin-bottom: 5px;
     }
-    .section .field-email label{
-        font-size: 12px;
+    .section .sub-field-email label{
+        font-size: 8px;
     }
-    .section .field-email span{
+    .section .sub-field-email p{
         font-size: 10px;
     }
     .section .field-password label{
@@ -445,9 +650,10 @@ hr {
     .section .sub-field .field-mobile p{
         font-size: 8px;
     }
-    .field label{
+    .field-notifications label{
         font-size: 12px;
-        margin-right: 50px;
+        margin-right: 40px;
+        font-weight: bold;
     }
     .sub-field .sub-field-activity label{
         font-size: 12px;
