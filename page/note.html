@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/note.css">
     <title>Note Taker App</title>
@@ -67,11 +66,36 @@
             <div class="message-container">
                 <label for="message">Message</label>
                 <textarea id="note-content" placeholder="Enter your note here..." oninput="updatePreview()" onkeydown="trackLine(event)"></textarea>
-    
+                  
+                    <!-- Emoji Picker -->
+                <label for="emoji-picker">Add Emoji:</label>
+                <div class="emoji-picker" id="emoji-picker">
+                    <span>👨‍💼</span><span>👩‍💼</span><span>👨‍🍳</span><span>👩‍🍳</span><span>👨‍🔬</span><span>👩‍🔬</span>
+                    <span>👨‍💻</span><span>👩‍💻</span><span>👨‍🎓</span><span>👩‍🎓</span><span>👨‍⚕️</span><span>👩‍⚕️</span>
+                    <span>👨‍🔧</span><span>👩‍🔧</span><span>👨‍🏫</span><span>👩‍🏫</span><span>👨‍🌾</span><span>👩‍🌾</span>
+                    <span>👨‍🎤</span><span>👩‍🎤</span><span>👨‍🏭</span><span>👩‍🏭</span><span>👨‍🚀</span><span>👩‍🚀</span>
+                    <span>👨‍⚖️</span><span>👩‍⚖️</span><span>👨‍🎨</span><span>👩‍🎨</span><span>🦸‍♂️</span><span>🦸‍♀️</span>
+                    <span>👨‍✈️</span><span>👩‍✈️</span><span>👨‍✈️</span><span>👩‍✈️</span><span>👨‍🔧</span><span>👩‍🔧</span>
+                    <span>🕵️‍♂️</span><span>🕵️‍♀️</span><span>👨‍⚖️</span><span>👩‍⚖️</span><span>👨‍💻</span><span>👩‍💻</span>
+                    <span>👨‍🏫</span><span>👩‍🏫</span><span>👨‍🌾</span><span>👩‍🌾</span><span>👨‍⚕️</span><span>👩‍⚕️</span>
+                    <span>👨‍🎓</span><span>👩‍🎓</span><span>👨‍🎨</span><span>👩‍🎨</span><span>👨‍🔬</span><span>👩‍🔬</span>
+                    <span>🧑‍💻</span><span>🧑‍🔧</span><span>🧑‍⚖️</span><span>🧑‍🏫</span><span>🧑‍🚀</span><span>🧑‍⚖️</span>
+                    <span>💻</span><span>🖥️</span><span>🖨️</span><span>📱</span><span>🖱️</span><span>⌨️</span>
+                    <span>🌐</span><span>📶</span><span>🕶️</span><span>📚</span><span>📖</span><span>📑</span>
+                    <span>📜</span><span>📝</span><span>📂</span><span>📎</span><span>📏</span><span>✂️</span>
+                    <span>📌</span><span>📍</span><span>📓</span><span>📔</span><span>📘</span><span>📙</span>
+                    <span>📗</span><span>📚</span><span>🧑‍🎓</span><span>🎓</span><span>🧑‍🏫</span><span>🖋️</span>
+                    <span>✒️</span><span>🖍️</span><span>📝</span><span>💡</span><span>🔌</span><span>🔋</span>
+                    <span>📡</span><span>🕹️</span><span>🖲️</span><span>📠</span><span>📷</span><span>🎥</span>
+                    <span>💾</span><span>📀</span><span>🖥️</span><span>🖱️</span><span>🎮</span><span>🕹️</span>
+                    <span>👩‍🚒</span><span>👨‍🚒</span><span>👩‍🍳</span><span>👨‍🍳</span><span>👨‍🌾</span><span>👩‍🌾</span>
+                    <span>👨‍🎤</span><span>👩‍🎤</span><span>👨‍🏫</span><span>👩‍🏫</span><span>🧑‍💻</span><span>🧑‍⚖️</span>
+                    
+                </div>                 
                 <!-- Formatting Tools -->
                 <div class="formatting-tools">
                     <!-- Font Style Selection -->
-                    <div class="font-option">
+                    <div class="f ont-option">
                         <label for="font-style">Font Style:</label>
                         <select id="font-style" onchange="changeFontStyle()">
                             <option value="Arial">Arial</option>

@@ -491,3 +491,17 @@ document.getElementById('search').addEventListener('input', (e) => {
     filterNotes(e.target.value);
 });
 ;
+const emojiPicker = document.getElementById('emoji-picker');
+const noteContent = document.getElementById('note-content');
+
+// Add emoji to the textarea when clicked
+emojiPicker.addEventListener('click', (event) => {
+    if (event.target.tagName === 'SPAN') {
+        noteContent.value += event.target.textContent;
+    }
+});
+
+// Close the modal (example functionality for Cancel button)
+document.getElementById('cancel-note').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'none';
+});

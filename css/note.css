@@ -931,6 +931,27 @@ nav a.active {
     font-size: 0.9rem;
     margin-bottom: 24px;
 }
+.emoji-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.emoji-picker span {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.emoji-picker span:hover {
+    transform: scale(1.2);
+}
 
 /* General mobile-first responsiveness */
 
