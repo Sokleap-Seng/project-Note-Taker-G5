@@ -142,18 +142,7 @@ function exportNote(index) {
 // Load Trashed Notes
 
 
-// Show Trash Section
-function showTrash() {
-    document.getElementById('my-notes').style.display = 'none';
-    document.getElementById('trashed-notes').style.display = 'block';
-    loadTrashedNotes();
-}
 
-// Show Notes Section
-function showNotes() {
-    document.getElementById('trashed-notes').style.display = 'none';
-    document.getElementById('my-notes').style.display = 'block';
-}
 
 // Restore Note from Trash
 function restoreNote(index) {
@@ -457,3 +446,48 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('-------------------------'); // Separator between notes
     });
 });
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('open');
+}
+function filterNotes(searchText) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const notesContainer = document.querySelector('.notes');
+    notesContainer.innerHTML = `
+        <div class="note add-note" onclick="openModal()">
+            <span class="plus-icon">+</span>
+        </div>
+    `;
+
+    const filteredNotes = notes.filter(note => {
+        return note.title.toLowerCase().includes(searchText.toLowerCase());
+    });
+
+    filteredNotes.filter(note => !note.deleted).forEach((note, index) => {
+        const noteElement = document.createElement('div');
+        noteElement.className = 'note';
+        noteElement.style.backgroundColor = note.bgColor;
+        noteElement.style.color = note.fontColor;
+
+        noteElement.innerHTML = `
+            <h1>${note.title}</h1>
+            <div>${note.content}</div>
+            <div class="note-date">Reminder: ${note.date}</div>
+            <div class="note-actions">
+                <button onclick="toggleOptions(${index})" class="more-icon">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <div id="options-${index}" class="options-dropdown" style="display: none;">
+                    <button onclick="openModalForEdit(${index})"><i class="fas fa-edit"></i> Edit</button>
+                    <button onclick="deleteNote(${index})"><i class="fas fa-trash"></i> Delete</button>
+                    <button onclick="exportNote(${index})"><i class="fas fa-download"></i> Export</button>
+                </div>
+            </div>
+        `;
+
+        notesContainer.appendChild(noteElement);
+    });
+}
+document.getElementById('search').addEventListener('input', (e) => {
+    filterNotes(e.target.value);
+});
+;
