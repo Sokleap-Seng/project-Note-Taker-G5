@@ -1,154 +1,459 @@
-const profileImage = document.querySelector('.king-image');
-const crown = document.querySelector('.king-crown');
-
-// Add hover effect for the crown visibility
-profileImage.addEventListener('mouseenter', () => {
-    crown.style.visibility = 'visible';
+// Initialize App
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
 });
 
-profileImage.addEventListener('mouseleave', () => {
-    crown.style.visibility = 'hidden';
-});
+// Open and Close Modal
 function openModal() {
-    const modal = document.getElementById("new-note-modal");
-    modal.style.display = modal.style.display === "none" ? "block" : "none";
+    document.getElementById('modal').style.display = 'block';
+    resetModal();
+
+    document.getElementById('save-note').addEventListener('click', saveNote);
+    document.getElementById('cancel-note').addEventListener('click', closeModal);
 }
 
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
 
-const notes = JSON.parse(localStorage.getItem('notes')) || [];
-const notesContainer = document.querySelector('.notes');
-const searchInput = document.getElementById('search');
-const modal = document.getElementById('modal');
-const noteTitleInput = document.getElementById('note-title');
-const noteContentInput = document.getElementById('note-content');
-const noteDateInput = document.getElementById('note-date');
-const noteColorInput = document.getElementById('note-color');
-const noteFontInput = document.getElementById('note-font');
-const noteFontColorInput = document.getElementById('note-font-color');
-const noteBoldInput = document.getElementById('note-bold');
-let currentIndex = null;
+// Reset the modal inputs
+function resetModal() {
+    document.getElementById('note-title').value = '';
+    document.getElementById('note-content').value = '';
+    document.getElementById('note-date').value = '';
+    document.getElementById('note-color').value = '#ffffff'; // Default background color
+    document.getElementById('note-font-color').value = '#000000'; // Default font color
+}
 
-function renderNotes(filter = '') {
+// Save New Note
+function saveNote() {
+    const title = document.getElementById('note-title').value;
+    const content = document.getElementById('note-content').value;
+    const date = document.getElementById('note-date').value;
+    const bgColor = document.getElementById('note-color').value;
+    const fontColor = document.getElementById('note-font-color').value;
+
+    if (!title || !content) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+    const note = {
+        id: Date.now(), // Unique ID
+        title,
+        content,
+        date,
+        bgColor,
+        fontColor,
+        created: new Date().toISOString(),
+        pinned: false,
+        deleted: false // Not deleted by default
+    };
+
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.push(note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    closeModal();
+    loadNotes();
+}
+
+// Load Notes
+function loadNotes() {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const notesContainer = document.querySelector('.notes');
     notesContainer.innerHTML = `
         <div class="note add-note" onclick="openModal()">
-            <p>+ New Note</p>
+            <span class="plus-icon">+</span>
         </div>
     `;
 
-    const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filter.toLowerCase()));
-
-    filteredNotes.forEach((note, index) => {
+    notes.filter(note => !note.deleted).forEach((note, index) => {
         const noteElement = document.createElement('div');
         noteElement.className = 'note';
-        noteElement.style.backgroundColor = note.color || '';
-        noteElement.style.fontFamily = note.font || 'inherit';
-        noteElement.style.fontWeight = note.bold ? 'bold' : 'normal';
-        noteElement.style.color = note.fontColor || 'inherit'; // Apply font color
-
-        const content = note.bullet ?
-            `<ul>${note.content.split('\n').map(line => `<li>${line}</li>`).join('')}</ul>` :
-            `<p>${note.content}</p>`;
+        noteElement.style.backgroundColor = note.bgColor;
+        noteElement.style.color = note.fontColor;
 
         noteElement.innerHTML = `
-            <h3>${note.title}</h3>
-            ${content}
-            <time>${note.time}</time>
-            <div class="note-icons">
-                <i class="fas fa-ellipsis-h" onclick="showOptions(${index})"></i>
-                <div class="options" id="options-${index}" style="display: none;">
-                    <div class="option" onclick="openModal(${index})">Edit</div>
-                    <div class="option" onclick="moveToTrash(${index})">Delete</div>
+            <h1>${note.title}</h1>
+            <div>${note.content}</div>
+            <div class="note-date">Reminder: ${note.date}</div>
+            <div class="note-actions">
+                <button onclick="toggleOptions(${index})" class="more-icon">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <div id="options-${index}" class="options-dropdown" style="display: none;">
+                    <button onclick="openModalForEdit(${index})"><i class="fas fa-edit"></i> Edit</button>
+                    <button onclick="deleteNote(${index})"><i class="fas fa-trash"></i> Delete</button>
+                    <button onclick="exportNote(${index})"><i class="fas fa-download"></i> Export</button>
                 </div>
             </div>
         `;
+
         notesContainer.appendChild(noteElement);
     });
 }
 
-function showOptions(index) {
+// Toggle Options Dropdown
+function toggleOptions(index) {
     const options = document.getElementById(`options-${index}`);
-    options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    const isVisible = options.style.display === 'block';
+    options.style.display = isVisible ? 'none' : 'block';
 }
 
-function openModal(index = null) {
-    currentIndex = index;
-    if (index !== null) {
-        const note = notes[index];
-        noteTitleInput.value = note.title;
-        noteContentInput.value = note.content;
-        noteDateInput.value = note.date || '';
-        noteColorInput.value = note.color || '#ffffff';
-        noteFontInput.value = note.font || 'Arial';
-        noteFontColorInput.value = note.fontColor || '#000000'; // Set font color
-        noteBoldInput.checked = note.bold || false;
-    }
-    modal.style.display = 'flex';
+// Delete Note (Move to Trash)
+function deleteNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes[index].deleted = true; // Move to Trash
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadNotes(); // Refresh notes
+    loadTrashedNotes(); // Update trash
 }
 
-function closeModal() {
-    modal.style.display = 'none';
-    noteTitleInput.value = '';
-    noteContentInput.value = '';
-    noteDateInput.value = '';
-    noteColorInput.value = '#ffffff';
-    noteFontInput.value = 'Arial';
-    noteFontColorInput.value = '#000000'; // Reset font color
-    noteBoldInput.checked = false;
-
-    currentIndex = null;
+// Restore Note
+function restoreNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes[index].deleted = false; // Restore from Trash
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadNotes(); // Refresh notes
+    loadTrashedNotes(); // Update trash
 }
 
-function saveNote() {
-    const title = noteTitleInput.value;
-    const content = noteContentInput.value;
-    const date = noteDateInput.value;
-    const color = noteColorInput.value;
-    const font = noteFontInput.value;
-    const fontColor = noteFontColorInput.value;
-    const bold = noteBoldInput.checked;
+// Permanently Delete Note
+function permanentlyDelete(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.splice(index, 1); // Remove note permanently
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadTrashedNotes(); // Update trash
+}
 
-    if (title && content) {
-        const newNote = {
-            title,
-            content,
-            time: new Date().toLocaleString(),
-            date,
-            color: color === '#ffffff' ? null : color,
-            font,
-            fontColor,  // Store font color
-            bold
-        };
+// Export Note
+function exportNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
+    const fileContent = `Title: ${note.title}\n\nContent: ${note.content}\n\nReminder Date: ${note.date}`;
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${note.title}.txt`;
+    link.click();
+}
 
-        if (currentIndex !== null) {
-            notes[currentIndex] = newNote;
-        } else {
-            notes.push(newNote);
+// Load Trashed Notes
+
+
+// Show Trash Section
+function showTrash() {
+    document.getElementById('my-notes').style.display = 'none';
+    document.getElementById('trashed-notes').style.display = 'block';
+    loadTrashedNotes();
+}
+
+// Show Notes Section
+function showNotes() {
+    document.getElementById('trashed-notes').style.display = 'none';
+    document.getElementById('my-notes').style.display = 'block';
+}
+
+// Restore Note from Trash
+function restoreNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes[index].deleted = false;
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadTrashedNotes();
+    loadNotes();
+}
+
+// Permanently Delete Note from Trash
+function permanentlyDelete(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.splice(index, 1);  // Remove the note permanently from the list
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadTrashedNotes();
+    loadNotes();
+}
+
+// Toggle options (Edit, Delete, Export)
+function toggleOptions(index) {
+    const options = document.getElementById(`options-${index}`);
+    const isVisible = options.style.display === 'block';
+    options.style.display = isVisible ? 'none' : 'block';
+}
+
+// Open Modal for Editing
+function openModalForEdit(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
+
+    document.getElementById('note-title').value = note.title;
+    document.getElementById('note-content').value = note.content;
+    document.getElementById('note-date').value = note.date;
+    document.getElementById('note-color').value = note.bgColor;
+    document.getElementById('note-font-color').value = note.fontColor;
+
+    document.getElementById('save-note').removeEventListener('click', saveNote);  // Remove existing event listener
+    document.getElementById('save-note').addEventListener('click', function () {
+        saveEditedNote(index);
+    });
+
+    openModal();
+}
+
+// Save Edited Note
+function saveEditedNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
+
+    note.title = document.getElementById('note-title').value;
+    note.content = document.getElementById('note-content').value;
+    note.date = document.getElementById('note-date').value;
+    note.bgColor = document.getElementById('note-color').value;
+    note.fontColor = document.getElementById('note-font-color').value;
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+    closeModal();
+    loadNotes();
+}
+
+// Delete Note
+function deleteNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.splice(index, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    loadNotes();
+}
+
+// Export Note
+function exportNote(index) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const note = notes[index];
+
+    // Create a folder and file (this is just a simulated file export)
+    const folderName = `Note_${note.title}`;
+    const fileContent = `Title: ${note.title}\n\nContent: ${note.content}\n\nReminder Date: ${note.date}`;
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${folderName}/${note.title}.txt`; // Simulating a folder structure
+    link.click();
+}
+
+// Initialize App
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
+});
+        // Change Font Style
+        function changeFontStyle() {
+            const textarea = document.getElementById('note-content');
+            const selectedFont = document.getElementById('font-style').value;
+            textarea.style.fontFamily = selectedFont;
         }
-        localStorage.setItem('notes', JSON.stringify(notes));
-        renderNotes();
-        closeModal();
-    } else {
-        alert("Please provide both title and content for the note.");
-    }
-}
+    
+        // Apply Text Formatting (Bold, Italic, Underline)
+        function applyTextFormat(format) {
+            const textarea = document.getElementById('note-content');
+            const selectionStart = textarea.selectionStart;
+            const selectionEnd = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(selectionStart, selectionEnd);
+    
+            let formattedText = '';
+    
+            // Apply bold, italic, or underline formatting to the selected text
+            if (selectedText) {
+                if (format === 'bold') {
+                    formattedText = `**${selectedText}**`; // Using Markdown-like syntax for bold
+                } else if (format === 'italic') {
+                    formattedText = `*${selectedText}*`; // Using Markdown-like syntax for italic
+                } else if (format === 'underline') {
+                    formattedText = `_${selectedText}_`; // Using Markdown-like syntax for underline
+                }
+    
+                // Insert the formatted text back into the textarea
+                textarea.setRangeText(formattedText);
+            }
+        }
+// Initialize App
+document.addEventListener('DOMContentLoaded', () => {
+    loadNotes();
 
-function moveToTrash(index) {
-    if (index !== null) {
-        const trashedNote = notes.splice(index, 1)[0];
-        localStorage.setItem('notes', JSON.stringify(notes));
-
-        let trash = JSON.parse(localStorage.getItem('trash')) || [];
-        trash.push(trashedNote);
-        localStorage.setItem('trash', JSON.stringify(trash));
-
-        renderNotes();
-        closeModal();
-    }
-}
-
-searchInput.addEventListener('input', (e) => {
-    renderNotes(e.target.value);
+    // Track the current line as the user interacts with the textarea
+    const textarea = document.getElementById('note-content');
+    textarea.addEventListener('click', trackLine); // Update on click
+    textarea.addEventListener('keyup', trackLine); // Update on keypress
 });
 
-renderNotes();
+// Change Font Style
+function changeFontStyle() {
+    const textarea = document.getElementById('note-content');
+    const selectedFont = document.getElementById('font-style').value;
+    textarea.style.fontFamily = selectedFont;
+}
 
+// Track the current line in the textarea
+let currentLine = 0;
+
+function trackLine(event) {
+    const textarea = event.target;
+    const valueBeforeCaret = textarea.value.substring(0, textarea.selectionStart);
+    currentLine = valueBeforeCaret.split('\n').length - 1; // Get the current line index
+}
+
+// Apply formatting to the current line
+function toggleFormat(formatType) {
+    const textarea = document.getElementById('note-content');
+    const lines = textarea.value.split('\n'); // Split content into lines
+    const currentText = lines[currentLine]; // Get the text of the current line
+    const isChecked = document.getElementById(`${formatType}-text`).checked; // Check if the checkbox is selected
+
+    // Apply or remove formatting
+    let updatedLine = currentText;
+
+    if (formatType === 'bold') {
+        // Apply or remove bold font
+        updatedLine = isChecked
+            ? `<b>${currentText}</b>` // Add bold
+            : currentText.replace(/<b>(.*?)<\/b>/g, '$1'); // Remove bold
+    } else if (formatType === 'italic') {
+        // Apply or remove italic font
+        updatedLine = isChecked
+            ? `<i>${currentText}</i>` // Add italic
+            : currentText.replace(/<i>(.*?)<\/i>/g, '$1'); // Remove italic
+    } else if (formatType === 'underline') {
+        // Apply or remove underline
+        updatedLine = isChecked
+            ? `<u>${currentText}</u>` // Add underline
+            : currentText.replace(/<u>(.*?)<\/u>/g, '$1'); // Remove underline
+    }
+
+    // Update the specific line
+    lines[currentLine] = updatedLine;
+
+    // Update the textarea value
+    textarea.value = lines.join('\n');
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const importFileInput = document.getElementById("import-file");
+    const importFolderInput = document.getElementById("import-folder");
+
+    // Handle single file import (Text or PDF)
+    importFileInput.addEventListener("change", async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            if (file.type === "text/plain") {
+                const content = await file.text();
+                createNoteFromImport(file.name.replace(".txt", ""), content);
+            } else if (file.type === "application/pdf") {
+                const content = await extractTextFromPDF(file);
+                createNoteFromImport(file.name.replace(".pdf", ""), content);
+            } else {
+                alert("Unsupported file type. Please select a .txt or .pdf file.");
+            }
+        }
+    });
+
+    // Handle folder import (Text files only)
+    importFolderInput.addEventListener("change", async (event) => {
+        const files = Array.from(event.target.files).filter((file) => file.type === "text/plain");
+
+        for (const file of files) {
+            const content = await file.text();
+            createNoteFromImport(file.name.replace(".txt", ""), content);
+        }
+    });
+
+    // Save imported notes
+    function createNoteFromImport(title, content) {
+        const note = {
+            id: Date.now(),
+            title,
+            content,
+            date: null,
+            bgColor: "#ffffff",
+            fontColor: "#000000",
+            created: new Date().toISOString(),
+            pinned: false,
+            deleted: false,
+        };
+
+        const notes = JSON.parse(localStorage.getItem("notes")) || [];
+        notes.push(note);
+        localStorage.setItem("notes", JSON.stringify(notes));
+        loadNotes();
+    }
+
+    // Extract text from PDF using PDF.js
+    async function extractTextFromPDF(file) {
+        const pdfjsLib = window["pdfjs-dist/build/pdf"];
+        const pdf = await pdfjsLib.getDocument(URL.createObjectURL(file)).promise;
+        let content = "";
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent();
+            content += textContent.items.map((item) => item.str).join(" ");
+        }
+
+        return content;
+    }
+
+    // Load existing notes
+    loadNotes();
+});
+// Change font dynamically
+function changeFontStyle() {
+    const textarea = document.getElementById("note-content");
+    const selectedFont = document.getElementById("font-style").value;
+    textarea.style.fontFamily = selectedFont;
+}
+
+// Toggle text formatting (Bold, Italic, Underline)
+function toggleFormat(formatType) {
+    const textarea = document.getElementById("note-content");
+    const isChecked = document.getElementById(`${formatType}-text`).checked;
+    const lines = textarea.value.split("\n");
+    const currentLine = lines[currentLineIndex] || "";
+
+    let formattedLine = currentLine;
+
+    if (isChecked) {
+        if (formatType === "bold") formattedLine = `<b>${currentLine}</b>`;
+        if (formatType === "italic") formattedLine = `<i>${currentLine}</i>`;
+        if (formatType === "underline") formattedLine = `<u>${currentLine}</u>`;
+    } else {
+        formattedLine = formattedLine.replace(/<\/?(b|i|u)>/g, "");
+    }
+
+    lines[currentLineIndex] = formattedLine;
+    textarea.value = lines.join("\n");
+}
+
+// Track the current line in the textarea
+let currentLineIndex = 0;
+document.getElementById("note-content").addEventListener("click", (e) => {
+    const textarea = e.target;
+    const beforeCaret = textarea.value.substring(0, textarea.selectionStart);
+    currentLineIndex = beforeCaret.split("\n").length - 1;
+});
+// Retrieve notes from localStorage
+function getStoredNotes() {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    return notes;
+}
+
+// Display notes from localStorage in console
+document.addEventListener('DOMContentLoaded', () => {
+    const storedNotes = getStoredNotes(); // Get notes from localStorage
+    console.log('Stored Notes:', storedNotes);
+
+    // Iterate over each note and display its details
+    storedNotes.forEach(note => {
+        console.log(`Title: ${note.title}`);
+        console.log(`Content: ${note.content}`);
+        console.log(`Date: ${note.date}`);
+        console.log(`Background Color: ${note.bgColor}`);
+        console.log(`Font Color: ${note.fontColor}`);
+        console.log(`Pinned: ${note.pinned}`);
+        console.log(`Deleted: ${note.deleted}`);
+        console.log('-------------------------'); // Separator between notes
+    });
+});
