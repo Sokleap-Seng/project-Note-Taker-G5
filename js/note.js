@@ -64,6 +64,7 @@ function renderNotes(filter = '') {
     });
 }
 
+
 // Function to show options menu
 function showOptions(index) {
     const options = document.getElementById(`options-${index}`);
