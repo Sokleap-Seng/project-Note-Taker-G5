@@ -6,6 +6,7 @@ body {
     height: 100vh;
     background-color: #ffffff;
     overflow-x: hidden;
+    margin-left: 400px;
 }
 
 .profile-container {
@@ -16,6 +17,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow-x: hidden;
+    
 }
 
 .profile-header {
