@@ -391,6 +391,39 @@ body.dark-mode .controls button:hover,
 body.dark-mode .add-note button:hover {
     background: linear-gradient(90deg, #222266, #111144);
 }
+/* Social Icons */
+.social-icons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0; /* Slightly increased padding for better spacing */
+    border-top: 1px solid #ddd;/* Subtle background color for distinction */
+}
+
+.social-icons a {
+    font-size: 24px; /* Increased font size for visibility */
+    color: #a9a9a9; /* Neutral default color */
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and scaling */
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Blue color on hover */
+    transform: scale(1.2); /* Slight enlargement on hover */
+}
+
+.social-icons a:active {
+    color: #0000ff; /* Darker blue on active */
+    transform: scale(1); /* Return to original size on click */
+}
+
+/* Optional Styling for Better Aesthetics */
+.social-icons a i {
+    transition: transform 0.2s ease; /* Smooth animation for icon movement */
+}
+
+.social-icons a:hover i {
+    transform: rotate(15deg); /* Slight rotation for dynamic effect on hover */
+}
 
 /*----------------Responsive------------------------------------------------*/
 

@@ -225,21 +225,7 @@ function permanentlyDelete(index) {
     localStorage.setItem("trash", JSON.stringify(trash));
     renderTrash();
 }
-/* ---------------------------------------------Archive note--------------------------------------------*/
-// Initialization of Archive
-const archive = JSON.parse(localStorage.getItem('archive')) || [];
 
-// Archive Note
-function archiveNote(index) {
-    const archivedNote = notes.splice(index, 1)[0];
-    archivedNote.archived = true;
-    archive.push(archivedNote);
-    localStorage.setItem('notes', JSON.stringify(notes));
-    localStorage.setItem('archive', JSON.stringify(archive));
-    Swal.fire('Archived!', 'Your note has been archived.', 'success');
-    renderNotes();
-    renderArchive();
-}
 
 // Render Archive
 function renderArchive() {
@@ -449,3 +435,58 @@ document.getElementById('search').addEventListener('input', (e) => {
     filterNotes(e.target.value);
 });
 ;
+
+
+// Store active notes
+let noter = []; // Store active notes
+let trasher = []; // Store trashed notes
+
+// Add a new note
+function addNote() {
+    const title = document.getElementById("note-title").value.trim();
+    const content = document.getElementById("note-content").innerText.trim();
+    const color = document.getElementById("note-color").value;
+    const emoji = document.getElementById("note-emoji").value;
+    const reminder = document.getElementById("note-reminder").value;
+
+    if (!title || !content) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Title and Content are required!'
+        });
+        return;
+    }
+
+    const note = { id: Date.now(), title, content, color, emoji, reminder };
+    noter.push(note);
+    renderNotes();
+    resetModal();
+}
+
+// Render active notes
+function renderNotes() {
+    const container = document.getElementById("notes-container");
+    container.innerHTML = "";
+    noter.forEach((note) => {
+        container.innerHTML += `
+            <div class="note ${note.color}">
+                <h3>${note.emoji} ${note.title}</h3>
+                <p>${note.content}</p>
+                <small>Reminder: ${note.reminder || "None"}</small>
+                <button onclick="deleteNote(${note.id})" class="bg-red-500 hover:bg-red-600">Delete</button>
+            </div>
+        `;
+    });
+}
+
+// Delete a note (move to trash)
+function deleteNote(id) {
+    const note = noter.find((n) => n.id === id);
+    if (note) {
+        noter = noter.filter((n) => n.id !== id);
+        trasher.push(note);
+        renderNotes();
+        renderTrash();
+    }
+}
