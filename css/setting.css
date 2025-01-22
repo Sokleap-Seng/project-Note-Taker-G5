@@ -524,47 +524,31 @@ hr {
     }
 }
 
-@media (max-width: 400px) {
-    .sidebar {
-        width: 470px;
-        margin-right: 400px;
-        height: 74vh;
+@media (max-width: 480px) {
+    .sidebar .profile {
+        margin-right: 48px;
     }
-    .profile{
-        display: flex;
-        flex-direction: column;
-        height: 10vh; 
-        width: 100%;
+    .sidebar .profile .king-image {
+        margin-left: 100px;
     }
-    .profile .king-image{
-        display: flex;
-        margin-left: 50px;
+    .sidebar .Name-note {
+        position: relative;
+        top: 10px;
+        left: 20px;
     }
-    .profile a{
+    /* Increase touch target area for buttons */
+    .sidebar nav a,
+    .import-btn {
+        padding: 1rem;
+        font-size: 1.2rem;
+        width: 400px;
         margin-left: 150px;
+        height: 20px;
+        margin-top: 10px;
     }
-    nav {
-        height: 66vh; 
-        margin-left: 20px;
-        margin-top: 40px;
-    }
-
-    nav a {
-        height: 5vh;
-        width: 10px;
-    }
-    nav a p {
-        display: inline-block;
-    }
-    
-    .footer {
-        width: 100%;
-        font-size: 10px;
-        text-align: center; 
-    }
-
-    .footer p {
-        font-size: 12px;
+    .sidebar .profile a {
+        position: relative;
+        bottom: 16px;
     }
     #app {
         width: 386px;

@@ -358,6 +358,18 @@ function renderNotes() {
         notesContainer.appendChild(noteCard);
     });
 }
+// Function to show the note modal
+function showModal() {
+    const noteModal = document.getElementById('note-modal');
+    noteModal.style.display = 'block'; // Show the form
+}
+
+// Function to hide the note modal
+function cancelAction() {
+    const noteModal = document.getElementById('note-modal');
+    noteModal.style.display = 'none'; // Hide the form
+}
+
 
 
 /*--------------------------Save note as PDF-------------------------------*/
