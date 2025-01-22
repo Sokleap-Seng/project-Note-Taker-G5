@@ -546,36 +546,37 @@ hr {
 
 @media (max-width: 400px) {
     .sidebar {
-        width: 392px;
+        width: 470px;
         margin-right: 400px;
-        height: 68vh;
+        height: 62vh;
     }
     .profile{
         display: flex;
         flex-direction: column;
-        height: 10vh; 
+        height: 16vh; 
         width: 100%;
     }
     .profile .king-image{
         display: flex;
+        margin-left: 20px;
     }
     .profile a{
-        margin-left: 140px;
+        margin-left: 170px;
+        margin-top: 30px;
     }
-
-
     nav {
-        width: 100%;
         height: 56vh; 
-        margin-right: 50px;
+        margin-left: 20px;
     }
 
     nav a {
-        height: 6vh;
-        display: inline-block;
-        padding: 8px 16px; 
+        height: 7vh;
+        width: 10px;
     }
-
+    nav a p {
+        display: inline-block;
+    }
+    
     .footer {
         width: 100%;
         font-size: 10px;

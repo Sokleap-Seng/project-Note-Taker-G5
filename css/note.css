@@ -538,7 +538,7 @@ body.dark-mode {
     .sidebar nav a {
         padding: 1rem;
         font-size: 1rem;
-        width: 100%;
+        width: 105%;
         text-align: left;
         margin-left: 20px;
     }
@@ -548,6 +548,10 @@ body.dark-mode {
         text-align: center;
         margin-bottom: 1rem;
     }
+    .sidebar .profile .king-image {
+        margin-left: 380px;
+        margin-top: 20px;
+    }
     .sidebar .profile a {
         display: block;
         text-align: center;
@@ -556,21 +560,6 @@ body.dark-mode {
     .sidebar .profile a {
         font-size: 1.1rem;
     }
-    /* Main content adjusts to mobile-friendly padding */
-    #app {
-        margin-left: 0;
-        padding: 15px;
-        width: 100%;
-        margin-right: 274px;
-    }
-    header {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
-    header h1 {
-        font-size: 1.5rem;
-    }
     .search-container {
         width: 100%;
         margin-top: 10px;
@@ -578,22 +567,12 @@ body.dark-mode {
     .search-container .fa-search {
         margin-left: 520px;
     }
-    .notes {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .note {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-    .add-note {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-    }
     .add-note .plus-icon {
         font-size: 1.5em;
+    }
+    .main {
+        width: 100%;
+        margin-left: 20px;
     }
     .modal-content {
         width: 95%;
@@ -617,6 +596,7 @@ body.dark-mode {
         margin-top: 1rem;
         font-size: 0.8rem;
         text-align: center;
+        display: none;
     }
 }
 
@@ -627,8 +607,8 @@ body.dark-mode {
     .sidebar .profile {
         margin-right: 48px;
     }
-    .sidebar .king-image {
-        margin-left: 250px;
+    .sidebar .profile .king-image {
+        margin-left: 190px;
     }
     .sidebar .Name-note {
         position: relative;
@@ -640,15 +620,15 @@ body.dark-mode {
     .import-btn {
         padding: 1rem;
         font-size: 1.2rem;
-        width: 520px;
+        width: 400px;
     }
     .sidebar .profile a {
         position: relative;
         bottom: 16px;
     }
     .main {
-        margin-right: 300px;
-        width: 500px;
+        margin-right: 18px;
+        width: 400px;
         height: 100vh;
     }
     .add-note,
@@ -669,8 +649,20 @@ body.dark-mode {
     .social-icons {
         display: none;
     }
+    #addNote {
+        width: 120px;
+        font-size: 14px;
+    }
+    #save-pdf {
+        width: 150px;
+    }
     .footer {
         margin-right: 28px;
         display: none;
     }
+}
+
+
+}
+
 }
