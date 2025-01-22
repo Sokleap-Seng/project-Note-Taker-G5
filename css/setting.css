@@ -528,29 +528,29 @@ hr {
     .sidebar {
         width: 470px;
         margin-right: 400px;
-        height: 62vh;
+        height: 74vh;
     }
     .profile{
         display: flex;
         flex-direction: column;
-        height: 16vh; 
+        height: 10vh; 
         width: 100%;
     }
     .profile .king-image{
         display: flex;
-        margin-left: 20px;
+        margin-left: 50px;
     }
     .profile a{
-        margin-left: 170px;
-        margin-top: 30px;
+        margin-left: 150px;
     }
     nav {
-        height: 56vh; 
+        height: 66vh; 
         margin-left: 20px;
+        margin-top: 40px;
     }
 
     nav a {
-        height: 7vh;
+        height: 5vh;
         width: 10px;
     }
     nav a p {
@@ -570,7 +570,7 @@ hr {
         width: 386px;
         position: relative;
         right: 152px;
-        margin-top: 20px;
+        margin-top: 80px;
     }
     #app .profile-container {
         margin-left: 0;
