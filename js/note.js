@@ -101,11 +101,11 @@ function searchNotes() {
     // Check if the note is in trash or normal notes
     const allNotes = [...notes, ...trash];
     allNotes.forEach(function(note, index) {
-        if (note.title.toLowerCase().includes(query) || note.content.toLowerCase().includes(query)) {
-            const noteElement = document.createElement("div");
-            noteElement.className = "note-card p-4 rounded shadow"; // Apply the same style
+                if (note.title.toLowerCase().includes(query) || note.content.toLowerCase().includes(query)) {
+                    const noteElement = document.createElement("div");
+                    noteElement.className = "note-card p-4 rounded shadow"; // Apply the same style
 
-            noteElement.innerHTML = `
+                    noteElement.innerHTML = `
                 <h2 class="text-xl font-bold mb-2">${note.emoji || ''} ${note.title}</h2>
                 <div class="mb-4">${note.content}</div>
                 <div class="text-gray-500 text-sm">${note.timestamp ? moment(note.timestamp).format('LLL') : 'Deleted on: ' + moment(note.timestamp).format('LLL')}</div>
@@ -435,58 +435,3 @@ document.getElementById('search').addEventListener('input', (e) => {
     filterNotes(e.target.value);
 });
 ;
-
-
-// Store active notes
-let noter = []; // Store active notes
-let trasher = []; // Store trashed notes
-
-// Add a new note
-function addNote() {
-    const title = document.getElementById("note-title").value.trim();
-    const content = document.getElementById("note-content").innerText.trim();
-    const color = document.getElementById("note-color").value;
-    const emoji = document.getElementById("note-emoji").value;
-    const reminder = document.getElementById("note-reminder").value;
-
-    if (!title || !content) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Title and Content are required!'
-        });
-        return;
-    }
-
-    const note = { id: Date.now(), title, content, color, emoji, reminder };
-    noter.push(note);
-    renderNotes();
-    resetModal();
-}
-
-// Render active notes
-function renderNotes() {
-    const container = document.getElementById("notes-container");
-    container.innerHTML = "";
-    noter.forEach((note) => {
-        container.innerHTML += `
-            <div class="note ${note.color}">
-                <h3>${note.emoji} ${note.title}</h3>
-                <p>${note.content}</p>
-                <small>Reminder: ${note.reminder || "None"}</small>
-                <button onclick="deleteNote(${note.id})" class="bg-red-500 hover:bg-red-600">Delete</button>
-            </div>
-        `;
-    });
-}
-
-// Delete a note (move to trash)
-function deleteNote(id) {
-    const note = noter.find((n) => n.id === id);
-    if (note) {
-        noter = noter.filter((n) => n.id !== id);
-        trasher.push(note);
-        renderNotes();
-        renderTrash();
-    }
-}
