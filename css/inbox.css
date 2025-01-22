@@ -1,0 +1,51 @@
+@media (max-width: 480px) {
+    .sidebar .profile {
+        margin-right: 38px;
+    }
+    .sidebar .king-image {
+        margin-left: 10px;
+    }
+    .sidebar .Name-note {
+        position: relative;
+        top: 10px;
+        left: 20px;
+    }
+    /* Increase touch target area for buttons */
+    .sidebar nav a,
+    .import-btn {
+        padding: 1rem;
+        font-size: 1.2rem;
+        width: 520px;
+    }
+    .sidebar .profile a {
+        position: relative;
+        bottom: 16px;
+    }
+    .main {
+        margin-right: 300px;
+        width: 500px;
+        height: 100vh;
+    }
+    .add-note,
+    button {
+        width: 150px;
+    }
+    /* Footer text size adjustments */
+    .sidebar .footer {
+        font-size: 0.7rem;
+    }
+    .notes {
+        gap: 15px;
+    }
+    .hamburger .fa-bars {
+        position: relative;
+        left: 200px;
+    }
+    .social-icons {
+        display: none;
+    }
+    .footer {
+        margin-right: 28px;
+        display: none;
+    }
+}
