@@ -37,7 +37,7 @@
 
         <nav>
             <a href="/page/note.html" class="active"><i class="fas fa-home"></i> Home</a>
-            <a href="/page/inbox.html"><i class="fas fa-inbox"></i>Inbox</a>
+
             <a href="#" onclick="createNewFolder()"><i class="fa-regular fa-folder-open"></i> New Folder</a>
             <a href="#" onclick="renderTrash()"><i class="fa-solid fa-trash"></i> Trash</a>
             <a href="/page/setting.html"><i class="fas fa-cog"></i> Settings</a>
@@ -142,8 +142,11 @@
                 <label for="note-reminder" class="mr-2">Set Reminder:</label>
                 <input type="datetime-local" id="note-reminder" class="p-2 border rounded" />
             </div>
+            <!-- Updated Buttons Section -->
             <button onclick="addNote()" id="addNote" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save Note</button>
             <button id="save-pdf" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 ml-2">Save as PDF</button>
+            <button onclick="cancelAction()" id="cancelButton" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Cancel</button>
+
         </div>
 
         <!-- Notes Section -->
