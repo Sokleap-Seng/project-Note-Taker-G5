@@ -24,7 +24,6 @@ body {
 }
 
 .dropdown-menu {
-    display: none;
     position: absolute;
     top: 60px;
     left: 350px;
@@ -56,6 +55,7 @@ body {
 
 
 /* Responsive help */
+
 @media (max-width: 768px) {
     .sidebar {
         width: 200px;
@@ -95,11 +95,9 @@ body {
         position: relative;
         bottom: 16px;
     }
-
     .dropdown-menu {
-        width: 80%; 
-        left: 6.5%; 
+        width: 80%;
+        left: 6.5%;
         top: 590px;
     }
 }
-

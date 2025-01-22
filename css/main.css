@@ -417,13 +417,14 @@ body {
 }
 
 .main-point img {
-    width: 70%;
+    width: 90%;
     height: 550px;
     object-fit: cover;
     display: none;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-size: cover;
 }
 
 .main-point img.active {

@@ -105,7 +105,6 @@ body {
 }
 
 .sidebar nav a.active {
-    background-color: #5d5d5d;
     color: #ffffff;
     /* Keep the gold text color for the active link */
     font-weight: bold;
@@ -686,5 +685,3 @@ body.dark-mode {
         display: none;
     }
 }
-
-
