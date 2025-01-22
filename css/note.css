@@ -502,7 +502,6 @@ body.dark-mode {
 
 #cancelButton {
     background-color: #1600bc;
-    /* Red */
     color: white;
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -515,20 +514,32 @@ body.dark-mode {
     margin-left: 8px;
     font-weight: bold;
     margin-left: 10px;
-    /* Spacing from other buttons */
 }
 
 #cancelButton:hover {
     background-color: #2855f9;
-    /* Darker Red */
     transform: translateY(-2px);
 }
 
 
-/*----------------Responsive------------------------------------------------*/
+/* Customize bullet colors */
 
+.ql-editor ul li::marker {
+    color: #000;
+    /* Default color for bullets */
+}
 
-/* For devices smaller than 768px */
+.ql-editor ul li.red::marker {
+    color: red;
+}
+
+.ql-editor ul li.blue::marker {
+    color: blue;
+}
+
+.ql-editor ul li.green::marker {
+    color: green;
+}
 
 @media (max-width: 768px) {
     /* Adjust body layout to stack vertically on small screens */

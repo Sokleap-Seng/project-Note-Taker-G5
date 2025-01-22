@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Note Taker App</title>
     <link rel="stylesheet" href="/css/note.css">
-    <link rel="stylesheet" href="/css/help.css">
-
+    <link rel="stylesheet" href="/css/inbox.css">
 </head>
 
 <body>
     <div class="sidebar">
         <div class="profile">
             <img class="king-image" src="/image/Logo-image.png" alt="Profile Image">
-            <a class="Name-note" href="#">Note Taker</a>
+            <a href="#">Note Taker</a>
         </div>
         <nav>
             <a href="/page/note.html" class="active"><i class="fas fa-home"></i> Home</a>
@@ -23,8 +24,7 @@
             <a href="#" onclick="createNewFolder()"><i class="fa-regular fa-folder-open"></i> New Folder</a>
             <a href="#" onclick="renderTrash()"><i class="fa-solid fa-trash"></i> Trash</a>
             <a href="/page/setting.html"><i class="fas fa-cog"></i> Settings</a>
-            <a href="/page/help.html" id="help-link" class="active"><i class="fas fa-question-circle"></i> Help</a>
-            <a href="/page/login.html"><i class="fas fa-sign-out-alt"></i><p>Log Out</p></a>
+            <a href="/page/help.html"><i class="fas fa-question-circle"></i> Help</a>
         </nav>
         <div class="social-icons">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -35,23 +35,7 @@
             <p>&copy; Note Taker App</p>
         </div>
     </div>
-
-    <div class="content">
-        <div class="dropdown-menu" id="help-menu">
-            <a href="#">📚 Help & documentation</a>
-            <a href="#">💬 Note taker support</a>
-            <hr>
-            <a href="#">Keyboard shortcut</a>
-            <a href="#">What is new?</a>
-            <a href="/index.html">Join us</a>
-            <hr>
-            <a href="/page/login.html">Spotify-note-taker@Q5</a>
-            <a href="#">Terms & privacy</a>
-            <a href="#">Status</a>
-        </div>
-    </div>
-
-    <script src="/js/help.js"></script>
+    <script src="/js/note.js"></script>
 </body>
 
 </html>

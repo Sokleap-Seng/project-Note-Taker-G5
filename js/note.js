@@ -15,11 +15,7 @@ const trash = JSON.parse(localStorage.getItem('trash')) || [];
 // Render Notes on Page Load
 renderNotes();
 
-// Initialize Quill
-const quill = new Quill('#note-content', {
-    theme: 'snow',
-    placeholder: 'Write your note here...',
-});
+
 
 // Show Modal
 function showModal() {
@@ -61,8 +57,52 @@ function renderNotes() {
         notesContainer.appendChild(noteCard);
     });
 }
+const quill = new Quill('#note-content', {
+    theme: 'snow',
+    placeholder: 'Write your note here...',
+    modules: {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'align': [] }],
+            ['bold', 'italic', 'underline'],
+            ['emoji'],
+            ['link'],
+            ['image'],
+            ['video'],
+            [{ 'color': [] }],
+            // Placeholder for adding font sizes
+        ]
+    }
+});
 
-///Darrk mood
+// Add a custom dropdown for font sizes (100 options)
+const fontSizes = [];
+for (let i = 1; i <= 100; i++) {
+    fontSizes.push(i + 'px');
+}
+
+const fontSelector = document.createElement('select');
+fontSizes.forEach(size => {
+    const option = document.createElement('option');
+    option.value = size;
+    option.text = size;
+    fontSelector.appendChild(option);
+});
+
+// Add the custom font size dropdown to the toolbar
+const toolbar = quill.getModule('toolbar');
+toolbar.addHandler('font', () => {
+    const selectedFontSize = fontSelector.value;
+    quill.format('size', selectedFontSize);
+});
+
+// Add font size dropdown to the toolbar
+const toolbarContainer = document.querySelector('.ql-toolbar');
+toolbarContainer.appendChild(fontSelector);
+
+
+
 
 // Render Trash
 function renderTrash() {
@@ -358,18 +398,6 @@ function renderNotes() {
         notesContainer.appendChild(noteCard);
     });
 }
-// Function to show the note modal
-function showModal() {
-    const noteModal = document.getElementById('note-modal');
-    noteModal.style.display = 'block'; // Show the form
-}
-
-// Function to hide the note modal
-function cancelAction() {
-    const noteModal = document.getElementById('note-modal');
-    noteModal.style.display = 'none'; // Hide the form
-}
-
 
 
 /*--------------------------Save note as PDF-------------------------------*/
@@ -401,6 +429,19 @@ function saveNoteAsPDF() {
     const fileName = `${title || 'Untitled_Note'}.pdf`;
     pdf.save(fileName);
 }
+
+// Function to show the note modal
+function showModal() {
+    const noteModal = document.getElementById('note-modal');
+    noteModal.style.display = 'block'; // Show the form
+}
+
+// Function to hide the note modal
+function cancelAction() {
+    const noteModal = document.getElementById('note-modal');
+    noteModal.style.display = 'none'; // Hide the form
+}
+
 
 // Attach the function to the button
 document.getElementById('save-pdf').addEventListener('click', saveNoteAsPDF);
