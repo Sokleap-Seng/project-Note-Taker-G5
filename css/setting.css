@@ -524,6 +524,7 @@ hr {
     }
 }
 
+<<<<<<< HEAD
 @media (max-width: 480px) {
     .sidebar .profile {
         margin-right: 48px;
@@ -549,6 +550,49 @@ hr {
     .sidebar .profile a {
         position: relative;
         bottom: 16px;
+=======
+@media (max-width: 400px) {
+    .sidebar {
+        width: 470px;
+        margin-right: 400px;
+        height: 62vh;
+    }
+    .profile{
+        display: flex;
+        flex-direction: column;
+        height: 16vh; 
+        width: 100%;
+    }
+    .profile .king-image{
+        display: flex;
+        margin-left: 20px;
+    }
+    .profile a{
+        margin-left: 170px;
+        margin-top: 30px;
+    }
+    nav {
+        height: 56vh; 
+        margin-left: 20px;
+    }
+
+    nav a {
+        height: 7vh;
+        width: 10px;
+    }
+    nav a p {
+        display: inline-block;
+    }
+    
+    .footer {
+        width: 100%;
+        font-size: 10px;
+        text-align: center; 
+    }
+
+    .footer p {
+        font-size: 12px;
+>>>>>>> 1f17814d0720e5f1d375c03708d291d869cc1985
     }
     #app {
         width: 386px;
