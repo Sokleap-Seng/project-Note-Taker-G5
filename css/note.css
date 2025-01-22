@@ -48,7 +48,6 @@ body {
     /* Subtle shadow */
     transition: transform 0.3s ease;
     /* Smooth hover transition */
-   
 }
 
 .sidebar .profile img:hover {
@@ -78,6 +77,7 @@ body {
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.2s;
 }
+
 .sidebar nav i {
     display: flex;
     align-items: center;
@@ -118,19 +118,24 @@ body {
     opacity: 0.8;
 }
 
+
 /* Main Section */
+
 .main {
     flex-grow: 1;
     padding: 20px;
-    margin-left: 280px; /* Offset for the fixed sidebar width */
+    margin-left: 280px;
+    /* Offset for the fixed sidebar width */
     overflow-y: auto;
-    background-color: #f3f3f3;
+    background-color: #ededed;
+    margin-top: 40px;
 }
 
-.main #search-input{
+.main #search-input {
     border-radius: 12px;
 }
-#note-modal{
+
+#note-modal {
     border-radius: 12px;
     padding: 30px;
 }
@@ -179,39 +184,47 @@ body {
     gap: 15px;
 }
 
+
 /*----------------------------- Display note --------------------------------------------*/
-#note-modal input{
-     margin-bottom: 12px;
-     border-radius: 8px;
-     border: 1px solid #4589d1;
-     
+
+#note-modal input {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #4589d1;
 }
-#note-modal input:hover{
+
+#note-modal input:hover {
     border: 2px solid #0056b3;
 }
 
 .note-card {
     transition: transform 0.2s;
 }
+
 .note-card:hover {
     transform: scale(1.05);
 }
-.pinned { 
-    border: 2px solid gold; 
-}
-.note-card {
-word-wrap: break-word;
-overflow-wrap: break-word;
-white-space: normal;
-padding: 1rem;
-border-radius: 0.5rem;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-transition: transform 0.2s ease-in-out;
+
+.pinned {
+    border: 2px solid gold;
 }
 
+.note-card {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+
 /* Save Note button styling */
+
 #addNote {
-    background-color: #fbbf24; /* Yellow */
+    background-color: #fbbf24;
+    /* Yellow */
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -220,15 +233,19 @@ transition: transform 0.2s ease-in-out;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  #addNote:hover {
-    background-color: #f59e0b; /* Darker Yellow */
-  }
-  
-  /* Save as PDF button styling */
-  #save-pdf {
-    background-color: #ef4444; /* Red */
+}
+
+#addNote:hover {
+    background-color: #f59e0b;
+    /* Darker Yellow */
+}
+
+
+/* Save as PDF button styling */
+
+#save-pdf {
+    background-color: #ef4444;
+    /* Red */
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -238,15 +255,19 @@ transition: transform 0.2s ease-in-out;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-left: 1rem;
-  }
-  
-  #save-pdf:hover {
-    background-color: #dc2626; /* Darker Red */
-  }
-  
+}
+
+#save-pdf:hover {
+    background-color: #dc2626;
+    /* Darker Red */
+}
+
+
 /* Edit Button styling */
+
 .edit-note {
-    background: linear-gradient(45deg, #007bff, #0056b3); /* Two-tone blue */
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    /* Two-tone blue */
     color: white;
     padding: 0.75rem 1.1rem;
     border: none;
@@ -256,15 +277,19 @@ transition: transform 0.2s ease-in-out;
     cursor: pointer;
     transition: background 0.3s ease;
     width: 100px;
-  }
-  
-  .edit-note:hover {
-    background: linear-gradient(45deg, #0056b3, #007bff); /* Reverse the gradient on hover */
-  }
-  
-  /* Delete Button styling */
-  .delete-note {
-    background: linear-gradient(45deg, #f44336, #d32f2f); /* Two-tone red */
+}
+
+.edit-note:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    /* Reverse the gradient on hover */
+}
+
+
+/* Delete Button styling */
+
+.delete-note {
+    background: linear-gradient(45deg, #f44336, #d32f2f);
+    /* Two-tone red */
     color: white;
     padding: 0.75rem 1.2rem;
     border: none;
@@ -274,28 +299,35 @@ transition: transform 0.2s ease-in-out;
     cursor: pointer;
     transition: background 0.3s ease;
     width: 100px;
-  }
-  
-  .delete-note:hover {
-    background: linear-gradient(45deg, #d32f2f, #f44336); /* Reverse the gradient on hover */
-  }
-  
-  /* Archive Button (removed from HTML & CSS) */
-  .pin-note {
-    display: none; /* Archive button hidden */
-  }
-  
-.bg-white { 
+}
+
+.delete-note:hover {
+    background: linear-gradient(45deg, #d32f2f, #f44336);
+    /* Reverse the gradient on hover */
+}
+
+
+/* Archive Button (removed from HTML & CSS) */
+
+.pin-note {
+    display: none;
+    /* Archive button hidden */
+}
+
+.bg-white {
     display: none;
 }
 
 #archive-container {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
 
+
 /* Updated Buttons */
+
 .controls button,
 .add-note button {
     padding: 12px 18px;
@@ -318,14 +350,18 @@ transition: transform 0.2s ease-in-out;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+
 /* Button Focus State */
+
 .controls button:focus,
 .add-note button:focus {
     outline: 2px solid #1e90ff;
     outline-offset: 2px;
 }
 
+
 /* Note Card Updated Style */
+
 .note-card {
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -343,13 +379,17 @@ transition: transform 0.2s ease-in-out;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+
 /* Pinned Note Highlight */
+
 .pinned {
     border: 2px solid gold;
     background: linear-gradient(135deg, #fffacd, #fdf5e6);
 }
 
+
 /* Input Fields */
+
 .controls input {
     flex: 1;
     padding: 12px;
@@ -365,7 +405,9 @@ transition: transform 0.2s ease-in-out;
     box-shadow: 0 0 4px rgba(30, 144, 255, 0.4);
 }
 
+
 /* Updated Dark Mode */
+
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
@@ -391,147 +433,67 @@ body.dark-mode .controls button:hover,
 body.dark-mode .add-note button:hover {
     background: linear-gradient(90deg, #222266, #111144);
 }
+
+
 /* Social Icons */
+
 .social-icons {
     margin-top: auto;
     display: flex;
     justify-content: space-around;
-    padding: 15px 0; /* Slightly increased padding for better spacing */
-    border-top: 1px solid #ddd;/* Subtle background color for distinction */
+    padding: 15px 0;
+    /* Slightly increased padding for better spacing */
+    border-top: 1px solid #ddd;
+    /* Subtle background color for distinction */
 }
 
 .social-icons a {
-    font-size: 24px; /* Increased font size for visibility */
-    color: #a9a9a9; /* Neutral default color */
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for color and scaling */
+    font-size: 24px;
+    /* Increased font size for visibility */
+    color: #a9a9a9;
+    /* Neutral default color */
+    transition: color 0.3s ease, transform 0.2s ease;
+    /* Smooth transition for color and scaling */
 }
 
 .social-icons a:hover {
-    color: #007bff; /* Blue color on hover */
-    transform: scale(1.2); /* Slight enlargement on hover */
+    color: #007bff;
+    /* Blue color on hover */
+    transform: scale(1.2);
+    /* Slight enlargement on hover */
 }
 
 .social-icons a:active {
-    color: #0000ff; /* Darker blue on active */
-    transform: scale(1); /* Return to original size on click */
+    color: #0000ff;
+    /* Darker blue on active */
+    transform: scale(1);
+    /* Return to original size on click */
 }
 
+
 /* Optional Styling for Better Aesthetics */
+
 .social-icons a i {
-    transition: transform 0.2s ease; /* Smooth animation for icon movement */
+    transition: transform 0.2s ease;
+    /* Smooth animation for icon movement */
 }
 
 .social-icons a:hover i {
-    transform: rotate(15deg); /* Slight rotation for dynamic effect on hover */
+    transform: rotate(15deg);
+    /* Slight rotation for dynamic effect on hover */
 }
+
 
 /*----------------Responsive------------------------------------------------*/
 
-/* Adjust container layout for small screens */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto; /* Adjust height for better usability */
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        padding: 10px;
-    }
-
-    .main {
-        padding: 10px;
-    }
-}
-
-/* Adjust Navbar for small screens */
-@media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
-    }
-
-    .navbar .imglogo img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .navbar .logo {
-        font-size: 18px;
-    }
-}
-
-/* Adjust Notes Container for smaller screens */
-@media (max-width: 768px) {
-    #notes-container {
-        grid-template-columns: 1fr; /* Single-column layout */
-        gap: 10px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    #notes-container {
-        grid-template-columns: repeat(2, 1fr); /* Two-column layout */
-        gap: 15px;
-    }
-}
-
-/* Adjust Note Cards */
-@media (max-width: 768px) {
-    .note-card {
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-    }
-}
-
-/* Sidebar adjustments for small screens */
-@media (max-width: 576px) {
-    .category a {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    .social-icons a {
-        font-size: 16px;
-    }
-}
-
-/* Adjust Add Note Button */
-@media (max-width: 768px) {
-    .add-note button {
-        font-size: 12px;
-        padding: 8px 15px;
-    }
-}
-
-/* Additional Responsive Improvements for Main Section */
-@media (max-width: 576px) {
-    .controls {
-        flex-direction: column;
-    }
-
-    .controls input {
-        margin-bottom: 10px;
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .controls button {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
-
-
 #archive-container {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
+
+
 /* Dark-mood */
 
 body {
@@ -540,69 +502,26 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+
 /* Dark mode styles */
+
 body.dark-mode {
     background-color: black;
     color: white;
 }
+
+
 /*----------------Responsive------------------------------------------------*/
 
-/* Adjust container layout for small screens */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto; /* Adjust height for better usability */
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        padding: 10px;
-    }
-
-    .main {
-        padding: 10px;
-        margin-left: 0; /* Remove left margin to adjust layout */
-    }
-
-    .navbar {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
-    }
-
-    .navbar .imglogo img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .navbar .logo {
-        font-size: 18px;
-    }
-
-    .sidebar {
-        position: static;
-        height: auto; /* Allow sidebar to be part of normal document flow */
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .social-icons {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 0;
-    }
-}
 
 /* For devices smaller than 768px */
+
 @media (max-width: 768px) {
     /* Adjust body layout to stack vertically on small screens */
     body {
         flex-direction: column;
         align-items: center;
     }
-
     /* Full-width sidebar on mobile */
     .sidebar {
         width: 105%;
@@ -611,13 +530,11 @@ body.dark-mode {
         border-radius: 0;
         padding: 10px;
     }
-
     /* Stacked navigation links in sidebar */
     .sidebar nav {
         flex-direction: column;
         width: 90%;
     }
-
     .sidebar nav a {
         padding: 1rem;
         font-size: 1rem;
@@ -625,23 +542,20 @@ body.dark-mode {
         text-align: left;
         margin-left: 20px;
     }
-
     /* Profile area is centered and compact */
     .sidebar .profile {
         display: block;
         text-align: center;
         margin-bottom: 1rem;
     }
-    .sidebar .profile  a{
+    .sidebar .profile a {
         display: block;
         text-align: center;
         margin-bottom: 1rem;
     }
-
     .sidebar .profile a {
         font-size: 1.1rem;
     }
-
     /* Main content adjusts to mobile-friendly padding */
     #app {
         margin-left: 0;
@@ -649,68 +563,56 @@ body.dark-mode {
         width: 100%;
         margin-right: 274px;
     }
-
     header {
         flex-direction: column;
         align-items: center;
         margin-bottom: 1.5rem;
     }
-
     header h1 {
         font-size: 1.5rem;
     }
-
     .search-container {
         width: 100%;
         margin-top: 10px;
     }
-    .search-container .fa-search{
+    .search-container .fa-search {
         margin-left: 520px;
     }
-
     .notes {
         flex-direction: column;
         gap: 20px;
     }
-
     .note {
         width: 100%;
         padding: 10px;
         box-sizing: border-box;
     }
-
     .add-note {
         width: 60px;
         height: 60px;
         font-size: 2rem;
     }
-
     .add-note .plus-icon {
         font-size: 1.5em;
     }
-
     .modal-content {
         width: 95%;
         padding: 20px;
         margin: 0 auto;
     }
-
     .note-actions {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .import-container {
         flex-direction: column;
         gap: 15px;
     }
-
     .import-btn {
         padding: 12px 20px;
         font-size: 14px;
         width: 100%;
     }
-
     .sidebar .footer {
         margin-top: 1rem;
         font-size: 0.8rem;
@@ -718,77 +620,57 @@ body.dark-mode {
     }
 }
 
+
 /* For very small devices (max-width: 480px) */
+
 @media (max-width: 480px) {
-    .sidebar .profile{
-        margin-right: 38px;
+    .sidebar .profile {
+        margin-right: 48px;
+    }
+    .sidebar .king-image {
+        margin-left: 250px;
+    }
+    .sidebar .Name-note {
+        position: relative;
+        top: 10px;
+        left: 20px;
     }
     /* Increase touch target area for buttons */
     .sidebar nav a,
     .import-btn {
         padding: 1rem;
-        font-size: 1.2rem;  
-        width: 400px;
+        font-size: 1.2rem;
+        width: 520px;
     }
     .sidebar .profile a {
         position: relative;
         bottom: 16px;
-       
     }
-    #app{
+    .main {
         margin-right: 300px;
-        width: 350px;
+        width: 500px;
+        height: 100vh;
     }
-    /* Adjust layout of note actions */
-    .note-actions {
-        flex-direction: row;
-        justify-content: space-between;
+    .add-note,
+    button {
+        width: 150px;
     }
-    .search-container .fa-search{
-        margin-left: 100px;
-     
-    }
-
-    .note-actions button {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
- 
-
-    /* Compact note layout */
-    .note {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    /* Larger plus icon for adding notes */
-    .add-note {
-        width: 80px;
-        height: 80px;
-        font-size: 2.5rem;
-        position: relative;
-        bottom: 50px;
-        
-    }
-
-    /* Modal content padding adjustment for tiny screens */
-    .modal-content {
-        padding: 15px;
-    }
-
     /* Footer text size adjustments */
     .sidebar .footer {
         font-size: 0.7rem;
     }
-
     .notes {
         gap: 15px;
     }
-    .hamburger .fa-bars{
-          position: relative;
-          left: 200px;
+    .hamburger .fa-bars {
+        position: relative;
+        left: 200px;
     }
-    .footer{
+    .social-icons {
+        display: none;
+    }
+    .footer {
         margin-right: 28px;
+        display: none;
     }
 }

@@ -434,4 +434,3 @@ function filterNotes(searchText) {
 document.getElementById('search').addEventListener('input', (e) => {
     filterNotes(e.target.value);
 });
-;

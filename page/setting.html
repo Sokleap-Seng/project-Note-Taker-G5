@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="/css/setting.css">
     <script src="/js/setting.js" defer></script>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="profile">
@@ -17,10 +19,15 @@
         </div>
         <nav>
             <a href="/page/note.html"><i class="fas fa-home"></i><p>Home</p></a>
-            <a href="/page/Trash.html"><i class="fas fa-inbox"></i> Trash</a>
+            <a href="/page/inbox.html"><i class="fas fa-inbox"></i>Inbox</a>
             <a href="/page/setting.html" class="active"><i class="fas fa-cog"></i><p>Settings</p></a>
             <a href="/page/help.html"><i class="fas fa-question-circle"></i><p>Help</p></a>
         </nav>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
         <div class="footer">
             <p>&copy; Note Taker App</p>
         </div>
@@ -35,11 +42,11 @@
                 <div class="profile-img">
                     <img src="/image/Sokleap.jpg" alt="Profile Image">
                 </div>
-                <div class="profile-info" >
+                <div class="profile-info">
                     <h1>Sokleap SENG</h1>
                     <i class="fa-solid fa-pen"></i>
                 </div>
-            </div>   
+            </div>
             <div class="section">
                 <h2>Account security</h2>
                 <hr>
@@ -54,7 +61,7 @@
                 </div>
                 <div class="field-password">
                     <label>Password</label>
-                    <input  type="password" value="***********" disabled>
+                    <input type="password" value="***********" disabled>
                 </div>
                 <div class="field">
                     <div class="field-step">
@@ -92,7 +99,7 @@
                         <p id="mobile" style="display: none;">Receive push notifications on mentions and comments via your mobile app.</p>
                     </div>
                     <input id="s1" type="checkbox" class="switch">
-                </div>   
+                </div>
                 <div class="field-notifications">
                     <label>Email notifications</label>
                 </div>
@@ -100,15 +107,15 @@
                 <div class="sub-field">
                     <div class="sub-field-activity">
                         <label>Activity in your workspace</label>
-                        <p id="activities" class="workspace-description" >Activity in workspace</p>
-                        <p id="activity" style="display: none;" >Receive emails when you get comments, mentions, page invites, reminders, access requests, and property changes.</p>
+                        <p id="activities" class="workspace-description">Activity in workspace</p>
+                        <p id="activity" style="display: none;">Receive emails when you get comments, mentions, page invites, reminders, access requests, and property changes.</p>
                     </div>
                     <input id="act" type="checkbox" class="switch">
                 </div>
                 <div class="sub-field">
                     <div class="sub-field-always">
                         <label>Always send email notifications</label>
-                        <p id="sub-always" class="workspace-description" >Always send email</p>
+                        <p id="sub-always" class="workspace-description">Always send email</p>
                         <p id="field-always" style="display: none;">Receive emails about activity in your workspace, even when you're active on the app.</p>
                     </div>
                     <input id="always" type="checkbox" class="switch">
@@ -116,8 +123,8 @@
                 <div class="sub-field">
                     <div class="sub-field-page">
                         <label>Page updates</label>
-                        <p id="sub-update" class="workspace-description" >Update</p>
-                        <p id="field-page" style="display: none;" >Receive email digests for changes to pages you're subscribed to.</p>
+                        <p id="sub-update" class="workspace-description">Update</p>
+                        <p id="field-page" style="display: none;">Receive email digests for changes to pages you're subscribed to.</p>
                     </div>
                     <input id="page" type="checkbox" class="switch">
                 </div>
@@ -125,10 +132,10 @@
                     <div class="sub-field-workspace">
                         <label>Workspace digest</label>
                         <p id="sub-workspace" class="workspace-description">Workspace digest</p>
-                        <p id="field-space" style="display: none;" >Receive email digests of what's happening in your workspace.</p>
+                        <p id="field-space" style="display: none;">Receive email digests of what's happening in your workspace.</p>
                     </div>
                     <input id="space" type="checkbox" class="switch">
-                </div>           
+                </div>
                 <div class="sub-field">
                     <div class="sub-field-announcements">
                         <label>Announcements and update emails</label>
@@ -138,6 +145,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </body>
+
 </html>
