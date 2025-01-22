@@ -77,7 +77,7 @@ body {
         margin-right: 48px;
     }
     .sidebar .profile .king-image {
-        margin-left: 200px;
+        margin-left: 170px;
     }
     .sidebar .Name-note {
         position: relative;
@@ -99,8 +99,7 @@ body {
     .dropdown-menu {
         width: 80%; 
         left: 6.5%; 
-        top: 300px;
-        
+        top: 590px;
     }
 }
 
