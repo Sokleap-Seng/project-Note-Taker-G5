@@ -81,7 +81,7 @@ body {
     }
 }
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
     .sidebar {
         width: 100px;
         padding: 10px;
@@ -98,6 +98,45 @@ body {
     .profile img {
         width: 50px;
         height: 50px;
+    }
+
+    .content {
+        margin-left: 120px;
+        padding: 10px;
+    }
+
+    .dropdown-menu {
+        width: 80%; 
+        left: 6.5%; 
+        top: 300px;
+        
+    }
+} */
+
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        margin-left: 15px;
+        text-align: center;
+    }
+
+    .sidebar nav a {
+        font-size: 12px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .profile img {
+        width: 50px;
+        height: 50px;
+    
+       
+    }
+    .king-image{
+        margin-bottom: 20px;
+        text-align: center;
     }
 
     .content {
