@@ -23,16 +23,14 @@ body {
 .content {
     flex-grow: 1;
     padding: 20px;
-    
     /* background-color: #f9f9f9; */
 }
 
-
 .dropdown-menu {
-    display: none; 
+    display: none;
     position: absolute;
-    top: 60px; 
-    left: 350px; 
+    top: 60px;
+    left: 350px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -40,8 +38,6 @@ body {
     padding: 10px;
     z-index: 1000;
     right: 40px;
-    
-   
 }
 
 .dropdown-menu a {
@@ -60,7 +56,10 @@ body {
     border: none;
     border-top: 1px solid #ddd;
 }
+
+
 /* Responsive help */
+
 @media (max-width: 768px) {
     .sidebar {
         width: 200px;
@@ -68,80 +67,37 @@ body {
         width: 100%;
         height: auto;
     }
-
     .content {
         margin-left: 220px;
         margin-top: 80px;
-        
     }
-    .king-image{
-       
-        
+    .king-image {
         right: 40%;
     }
 }
 
-/* @media (max-width: 576px) {
-    .sidebar {
-        width: 100px;
-        padding: 10px;
-        margin-left: 15px;
-        text-align: center;
+@media (max-width: 480px) {
+    .sidebar .profile {
+        margin-right: 48px;
     }
-
-    .sidebar nav a {
-        font-size: 12px;
-        padding: 5px;
-        text-align: center;
+    .sidebar .profile .king-image {
+        margin-left: 200px;
     }
-
-    .profile img {
-        width: 50px;
-        height: 50px;
+    .sidebar .Name-note {
+        position: relative;
+        top: 10px;
+        left: 20px;
     }
-
-    .content {
-        margin-left: 120px;
-        padding: 10px;
+    /* Increase touch target area for buttons */
+    .sidebar nav a,
+    .import-btn {
+        padding: 1rem;
+        font-size: 1.2rem;
+        width: 380px;
     }
-
-    .dropdown-menu {
-        width: 80%; 
-        left: 6.5%; 
-        top: 300px;
-        
-    }
-} */
-
-
-@media (max-width: 400px) {
-    .sidebar {
-        width: 100%;
-        padding: 10px;
-        margin-left: 15px;
-        text-align: center;
-    }
-
-    .sidebar nav a {
-        font-size: 12px;
-        padding: 5px;
-        text-align: center;
-    }
-
-    .profile img {
-        width: 50px;
-        height: 50px;
-    
-       
-    }
-    .king-image{
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .content {
-        margin-left: 120px;
-        padding: 10px;
+    .sidebar .profile a {
+        position: relative;
+        bottom: 16px;
     }
 
     .dropdown-menu {
