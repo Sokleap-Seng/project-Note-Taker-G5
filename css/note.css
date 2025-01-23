@@ -144,6 +144,9 @@ body {
     border-radius: 12px;
     padding: 30px;
 }
+#note-modal #note-content{
+    height: 200px;
+}
 
 .controls {
     display: flex;

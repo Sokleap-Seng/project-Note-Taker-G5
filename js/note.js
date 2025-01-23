@@ -62,27 +62,25 @@ const quill = new Quill('#note-content', {
     placeholder: 'Write your note here...',
     modules: {
         toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'align': [] }],
-            ['bold', 'italic', 'underline'],
-            ['emoji'],
-            ['link'],
-            ['image'],
-            ['video'],
-            [{ 'color': [] }],
-            // Placeholder for adding font sizes
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }], // H1 to H6 headers
+            [{ 'font': [] }], // Font selection
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Lists
+            [{ 'align': [] }], // Text alignment
+            ['bold', 'italic', 'underline', 'strike'], // Basic formatting
+            ['subscript', 'superscript'], // Subscript and superscript
+            [{ 'color': [] }, { 'background': [] }], // Text color and background
+            ['link', 'image', 'video'], // Media options
+            ['blockquote', 'code-block'], // Blockquote and code blocks
+            ['clean'], // Clear formatting
         ]
     }
 });
 
-// Add a custom dropdown for font sizes (100 options)
-const fontSizes = [];
-for (let i = 1; i <= 100; i++) {
-    fontSizes.push(i + 'px');
-}
+// Add a custom dropdown for font sizes (1px to 20px)
+
 
 const fontSelector = document.createElement('select');
+fontSelector.className = 'ql-font-size';
 fontSizes.forEach(size => {
     const option = document.createElement('option');
     option.value = size;
@@ -90,9 +88,9 @@ fontSizes.forEach(size => {
     fontSelector.appendChild(option);
 });
 
-// Add the custom font size dropdown to the toolbar
+// Update toolbar to handle custom font size
 const toolbar = quill.getModule('toolbar');
-toolbar.addHandler('font', () => {
+fontSelector.addEventListener('change', () => {
     const selectedFontSize = fontSelector.value;
     quill.format('size', selectedFontSize);
 });
@@ -100,6 +98,26 @@ toolbar.addHandler('font', () => {
 // Add font size dropdown to the toolbar
 const toolbarContainer = document.querySelector('.ql-toolbar');
 toolbarContainer.appendChild(fontSelector);
+
+// Enhanced bullet list handling (if necessary)
+toolbar.addHandler('list', function (value) {
+    if (value === 'ordered' || value === 'bullet') {
+        quill.format('list', value);
+    }
+});
+
+// Optional: Add tooltip for better usability
+fontSelector.setAttribute('title', 'Font Size');
+
+
+// Custom Print Button Handler
+toolbar.addHandler('print', () => {
+    const content = quill.root.innerHTML;
+    const newWindow = window.open();
+    newWindow.document.write(content);
+    newWindow.print();
+});
+
 
 
 
