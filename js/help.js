@@ -15,3 +15,10 @@ document.addEventListener("click", function (event) {
         helpMenu.style.display = "none";
     }
 });
+function toggleMobileMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+}
+window.onbeforeunload = function() {
+    return "Are you sure you want to leave this page?";
+};

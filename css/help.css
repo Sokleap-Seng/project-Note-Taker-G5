@@ -73,31 +73,111 @@ body {
 }
 
 @media (max-width: 480px) {
-    .sidebar .profile {
-        margin-right: 48px;
+    .sidebar {
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        border-radius: 0;
+        transition: width 0.3s ease;
     }
-    .sidebar .profile .king-image {
-        margin-left: 170px;
+    .sidebar .profile .Name-note{
+        display: none;
     }
-    .sidebar .Name-note {
-        position: relative;
-        top: 10px;
+
+    .sidebar.active {
+        width: 270px;
+    }
+
+    .sidebar .profile,
+    .sidebar nav,
+    .sidebar .social-icons,
+    .sidebar .footer {
+        display: none;
+    }
+
+    .sidebar.active .profile,
+    .sidebar.active nav,
+    .sidebar.active .social-icons,
+    .sidebar.active .footer {
+        display: block;
+    }
+
+    .sidebar .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
         left: 20px;
+        background-color: #000000;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
     }
-    /* Increase touch target area for buttons */
-    .sidebar nav a,
-    .import-btn {
+
+    .sidebar .mobile-menu-toggle i {
+        font-size: 1.5rem;
+    }
+
+    .sidebar nav a {
         padding: 1rem;
-        font-size: 1.2rem;
-        width: 380px;
+        text-align: center;
     }
-    .sidebar .profile a {
+    .sidebar .social-icons{
+        margin-left: 5 px;
+    }
+    .sidebar .social-icons a{
+        margin-right: 56px;   
+        display: none;     
+    }
+    .main {
+        margin-right: 18px;
+        width: 400px;
+        height: 100vh;
+    }
+    .add-note,
+    button {
+        width: 150px;
+    }
+    /* Footer text size adjustments */
+    .sidebar .footer {
+        font-size: 0.7rem;
+    }
+    .notes {
+        gap: 15px;
+    }
+    .hamburger .fa-bars {
         position: relative;
-        bottom: 16px;
+        left: 200px;
+    }
+    .social-icons {
+        display: none;
+    }
+    #addNote {
+        width: 100px;
+        font-size: 10px;
+    }
+    #save-pdf {
+        width: 110px;
+        font-size: 10px;
+        margin-left: 78px;
+       
+    }
+    #cancelButton{
+        width: 100px;
+        font-size: 10px;
+        margin-top: 12px;
+        margin-left: 90px;
+        
+    }
+    .footer {
+        margin-right: 28px;
+        display: none;
     }
     .dropdown-menu {
         width: 80%;
         left: 6.5%;
-        top: 590px;
+        top: 90px;
     }
 }

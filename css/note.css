@@ -103,6 +103,9 @@ body {
     color: #ffffff;
     /* Gold color for a "king" effect */
 }
+.sidebar .mobile-menu-toggle{
+    display: none;
+}
 
 .sidebar nav a.active {
     color: #ffffff;
@@ -628,27 +631,63 @@ body.dark-mode {
 /* For very small devices (max-width: 480px) */
 
 @media (max-width: 480px) {
-    .sidebar .profile {
-        margin-right: 48px;
+    .sidebar {
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        border-radius: 0;
+        transition: width 0.3s ease;
     }
-    .sidebar .profile .king-image {
-        margin-left: 190px;
+    .sidebar .profile .Name-note{
+        display: none;
     }
-    .sidebar .Name-note {
-        position: relative;
-        top: 10px;
+
+    .sidebar.active {
+        width: 270px;
+    }
+
+    .sidebar .profile,
+    .sidebar nav,
+    .sidebar .social-icons,
+    .sidebar .footer {
+        display: none;
+    }
+
+    .sidebar.active .profile,
+    .sidebar.active nav,
+    .sidebar.active .social-icons,
+    .sidebar.active .footer {
+        display: block;
+    }
+
+    .sidebar .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
         left: 20px;
+        background-color: #000000;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
     }
-    /* Increase touch target area for buttons */
-    .sidebar nav a,
-    .import-btn {
+
+    .sidebar .mobile-menu-toggle i {
+        font-size: 1.5rem;
+    }
+
+    .sidebar nav a {
         padding: 1rem;
-        font-size: 1.2rem;
-        width: 380px;
+        text-align: center;
     }
-    .sidebar .profile a {
-        position: relative;
-        bottom: 16px;
+    .sidebar .social-icons{
+        margin-left: 5 px;
+    }
+    .sidebar .social-icons a{
+        margin-right: 56px;   
+        display: none;     
     }
     .main {
         margin-right: 18px;
@@ -674,11 +713,21 @@ body.dark-mode {
         display: none;
     }
     #addNote {
-        width: 120px;
-        font-size: 14px;
+        width: 100px;
+        font-size: 10px;
     }
     #save-pdf {
-        width: 150px;
+        width: 110px;
+        font-size: 10px;
+        margin-left: 78px;
+       
+    }
+    #cancelButton{
+        width: 100px;
+        font-size: 10px;
+        margin-top: 12px;
+        margin-left: 90px;
+        
     }
     .footer {
         margin-right: 28px;

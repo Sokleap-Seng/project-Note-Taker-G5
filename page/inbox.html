@@ -16,21 +16,32 @@
     <div class="sidebar">
         <div class="profile">
             <img class="king-image" src="/image/Logo-image.png" alt="Profile Image">
-            <a href="#">Note Taker</a>
+            <a class="Name-note" href="#">Note Taker</a>
         </div>
-        <nav>
+    
+        <!-- Navbar -->
+        <nav class="nav-menu">
             <a href="/page/note.html" class="active"><i class="fas fa-home"></i> Home</a>
-
             <a href="#" onclick="createNewFolder()"><i class="fa-regular fa-folder-open"></i> New Folder</a>
             <a href="#" onclick="renderTrash()"><i class="fa-solid fa-trash"></i> Trash</a>
             <a href="/page/setting.html"><i class="fas fa-cog"></i> Settings</a>
             <a href="/page/help.html"><i class="fas fa-question-circle"></i> Help</a>
+            <a href="/page/login.html"><i class="fas fa-sign-out-alt"></i><p>Log Out</p></a>
         </nav>
+    
+        <!-- Mobile Menu Toggle Button -->
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    
+        <!-- Social Icons -->
         <div class="social-icons">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
             <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         </div>
+    
+        <!-- Footer -->
         <div class="footer">
             <p>&copy; Note Taker App</p>
         </div>

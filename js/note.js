@@ -487,3 +487,10 @@ function filterNotes(searchText) {
 document.getElementById('search').addEventListener('input', (e) => {
     filterNotes(e.target.value);
 });
+function toggleMobileMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+}
+window.onbeforeunload = function() {
+    return "Are you sure you want to leave this page?";
+};
