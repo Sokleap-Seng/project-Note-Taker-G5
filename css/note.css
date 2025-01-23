@@ -65,19 +65,23 @@ body {
 
 .sidebar nav {
     flex-grow: 1;
+    margin-top: 20PX;
+    gap: 20px;
+
 }
 
 .sidebar nav a {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     color: white;
     text-decoration: none;
-    padding: 0.8rem;
+    padding: 1rem;
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.2s;
     position: relative;
     bottom: 20px;
+    margin-top: 10px;
 }
 
 .sidebar nav i {
@@ -525,7 +529,11 @@ body.dark-mode {
     background-color: #2855f9;
     transform: translateY(-2px);
 }
-
+#archive-container {
+    display: none; /* Initially hidden */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
 
 /* Customize bullet colors */
 

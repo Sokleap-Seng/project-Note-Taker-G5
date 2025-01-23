@@ -75,10 +75,7 @@ const quill = new Quill('#note-content', {
         ]
     }
 });
-
 // Add a custom dropdown for font sizes (1px to 20px)
-
-
 const fontSelector = document.createElement('select');
 fontSelector.className = 'ql-font-size';
 fontSizes.forEach(size => {
@@ -117,11 +114,6 @@ toolbar.addHandler('print', () => {
     newWindow.document.write(content);
     newWindow.print();
 });
-
-
-
-
-
 // Render Trash
 function renderTrash() {
     notesContainer.innerHTML = ""; // Clear current notes container
@@ -148,9 +140,6 @@ function renderTrash() {
         notesContainer.appendChild(noteElement);
     });
 }
-
-
-
 // Search notes including trash
 function searchNotes() {
     const query = document.getElementById("search-input").value.toLowerCase();
@@ -192,8 +181,6 @@ function searchNotes() {
         }
     });
 }
-
-
 // Add event listener to the search input
 document.getElementById("search-input").addEventListener("input", searchNotes);
 
@@ -382,10 +369,8 @@ document.querySelector('a[href="#"]').addEventListener('click', showArchive);
 
 //         notesContainer.appendChild(noteCard);
 //     });
-// }   
-
-
-
+// } 
+  
 // Render Notes
 function renderNotes() {
     notesContainer.innerHTML = '';
@@ -416,7 +401,6 @@ function renderNotes() {
         notesContainer.appendChild(noteCard);
     });
 }
-
 
 /*--------------------------Save note as PDF-------------------------------*/
 
