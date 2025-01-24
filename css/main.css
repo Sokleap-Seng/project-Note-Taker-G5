@@ -783,6 +783,36 @@ footer {
 /* Very Small Screens (max-width: 480px) */
 
 @media screen and (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .logo {
+        height: 30px;
+        margin-bottom: 10px;
+      }
+    
+      .title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+    
+      .list {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+      }
+    
+      .main-list {
+        width: 100%;
+        margin: 5px 0;
+      }
+    
+      .btn-17 {
+        width: 100%;
+        text-align: center;
+      }
     .hero {
         flex-direction: column;
         padding: 30px 15px;
@@ -802,6 +832,8 @@ footer {
     .fancy {
         font-size: 14px;
         padding: 10px 20px;
+        margin-right: 90px;
+        width: 190px;
     }
     .hero-image img {
         max-width: 100%;

@@ -724,20 +724,22 @@ body.dark-mode {
         display: none;
     }
     #addNote {
-        width: 100px;
-        font-size: 10px;
+        width: 80px;
+        font-size: 5px;
     }
     #save-pdf {
-        width: 110px;
-        font-size: 10px;
-        margin-left: 78px;
+        width:80px;
+        font-size: 5px;
+        margin-left: 28px;
        
     }
     #cancelButton{
-        width: 100px;
-        font-size: 10px;
+        width: 80px;
+        font-size: 8px;
         margin-top: 12px;
-        margin-left: 90px;
+        margin-left: 226px;
+        position: relative;
+        bottom: 43px;
         
     }
     .footer {
